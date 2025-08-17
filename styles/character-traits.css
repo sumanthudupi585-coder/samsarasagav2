@@ -1,0 +1,372 @@
+/* ==============================================
+  Samsara Saga - Character Traits Visualization
+  ==============================================
+  * Description: Styling for character traits visualization
+  * Version: 1.0.0
+  ==============================================
+*/
+
+/* --- SECTION 1: NAKSHATRA VISUALIZATION --- */
+.nakshatra-symbol {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.nakshatra-symbol svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px var(--color-bronze-glow));
+}
+
+.nakshatra-symbol .glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(224, 150, 88, 0.2) 0%, transparent 70%);
+  animation: symbolGlow 3s infinite alternate;
+}
+
+@keyframes symbolGlow {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* --- SECTION 2: GUNA BALANCE VISUALIZATION --- */
+.guna-balance {
+  width: 100%;
+  max-width: 300px;
+  margin: 1.5rem auto;
+  position: relative;
+}
+
+.guna-triangle {
+  width: 100%;
+  height: 0;
+  padding-bottom: 86.6%; /* Height of equilateral triangle */
+  position: relative;
+}
+
+.guna-triangle svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.guna-marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-bronze-glow);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--color-bronze);
+  z-index: 2;
+}
+
+.guna-labels {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.guna-label {
+  position: absolute;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.guna-label.sattva {
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-sattva);
+}
+
+.guna-label.rajas {
+  bottom: -5px;
+  right: -5px;
+  color: var(--color-rajas);
+}
+
+.guna-label.tamas {
+  bottom: -5px;
+  left: -5px;
+  color: var(--color-tamas);
+}
+
+/* --- SECTION 3: ELEMENTAL ALIGNMENT --- */
+.elemental-alignment {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0;
+}
+
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18%;
+}
+
+.element-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.element-icon.active {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px currentColor;
+}
+
+.element-name {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+.element-name.active {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.element.earth .element-icon {
+  background-color: rgba(141, 110, 99, 0.2);
+  border: 1px solid var(--color-earth);
+  color: var(--color-earth);
+}
+
+.element.water .element-icon {
+  background-color: rgba(79, 195, 247, 0.2);
+  border: 1px solid var(--color-water);
+  color: var(--color-water);
+}
+
+.element.fire .element-icon {
+  background-color: rgba(255, 87, 34, 0.2);
+  border: 1px solid var(--color-fire);
+  color: var(--color-fire);
+}
+
+.element.air .element-icon {
+  background-color: rgba(178, 223, 219, 0.2);
+  border: 1px solid var(--color-air);
+  color: var(--color-air);
+}
+
+.element.ether .element-icon {
+  background-color: rgba(179, 157, 219, 0.2);
+  border: 1px solid var(--color-ether);
+  color: var(--color-ether);
+}
+
+/* --- SECTION 4: SPIRITUAL ARCHETYPE --- */
+.spiritual-archetype {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--color-bronze);
+}
+
+.archetype-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+}
+
+.archetype-name {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--color-bronze-glow);
+  margin-bottom: 0.5rem;
+}
+
+.archetype-description {
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* --- SECTION 5: GANA VISUALIZATION --- */
+.gana-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.gana-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.gana-deva .gana-icon {
+  background-color: rgba(102, 187, 106, 0.2);
+  border: 1px solid var(--color-deva);
+  color: var(--color-deva);
+}
+
+.gana-manushya .gana-icon {
+  background-color: rgba(255, 183, 77, 0.2);
+  border: 1px solid var(--color-manushya);
+  color: var(--color-manushya);
+}
+
+.gana-rakshasa .gana-icon {
+  background-color: rgba(229, 115, 115, 0.2);
+  border: 1px solid var(--color-rakshasa);
+  color: var(--color-rakshasa);
+}
+
+.gana-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.gana-deva .gana-name {
+  color: var(--color-deva);
+}
+
+.gana-manushya .gana-name {
+  color: var(--color-manushya);
+}
+
+.gana-rakshasa .gana-name {
+  color: var(--color-rakshasa);
+}
+
+/* --- SECTION 6: PADA (MOTIVATION) VISUALIZATION --- */
+.pada-visualization {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.pada-item {
+  padding: 1rem 0.5rem;
+  text-align: center;
+  border-radius: 4px;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  background-color: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--color-text-muted);
+}
+
+.pada-item.active {
+  opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pada-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pada-name {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pada-dharma.active {
+  background-color: rgba(102, 187, 106, 0.2);
+  border-color: var(--color-deva);
+}
+
+.pada-dharma.active .pada-icon,
+.pada-dharma.active .pada-name {
+  color: var(--color-deva);
+}
+
+.pada-artha.active {
+  background-color: rgba(255, 183, 77, 0.2);
+  border-color: var(--color-manushya);
+}
+
+.pada-artha.active .pada-icon,
+.pada-artha.active .pada-name {
+  color: var(--color-manushya);
+}
+
+.pada-kama.active {
+  background-color: rgba(233, 30, 99, 0.2);
+  border-color: #e91e63;
+}
+
+.pada-kama.active .pada-icon,
+.pada-kama.active .pada-name {
+  color: #e91e63;
+}
+
+.pada-moksha.active {
+  background-color: rgba(33, 150, 243, 0.2);
+  border-color: #2196f3;
+}
+
+.pada-moksha.active .pada-icon,
+.pada-moksha.active .pada-name {
+  color: #2196f3;
+}
+
+/* --- SECTION 7: RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  .nakshatra-symbol {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .elemental-alignment {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .element {
+    width: 30%;
+  }
+  
+  .pada-visualization {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .element {
+    width: 45%;
+  }
+}

@@ -1,0 +1,300 @@
+/* Base Styles */
+:root {
+    --primary-color: #5e35b1;
+    --secondary-color: #7e57c2;
+    --accent-color: #b39ddb;
+    --text-color: #212121;
+    --background-color: #f5f5f5;
+    --card-color: #ffffff;
+    --border-color: #e0e0e0;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --warning-color: #ff9800;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 20px;
+}
+
+/* Game Container */
+#game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "header header"
+        "main sidebar";
+    gap: 20px;
+    height: calc(100vh - 40px);
+    background-color: var(--card-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+#game-header {
+    grid-area: header;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#game-header h1 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+#status-display {
+    display: flex;
+    gap: 20px;
+}
+
+#act-display, #karma-display {
+    font-weight: bold;
+}
+
+/* Game Area */
+#game-area {
+    grid-area: main;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Scene Container */
+#scene-container {
+    background-color: var(--card-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#scene-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+#scene-text {
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Choices Container */
+#choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.choice-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.choice-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Puzzle Container */
+#puzzle-container {
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.puzzle-description {
+    margin-bottom: 15px;
+}
+
+.puzzle-solutions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.puzzle-solution-button {
+    background-color: var(--card-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.puzzle-solution-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Sidebar */
+#game-sidebar {
+    grid-area: sidebar;
+    background-color: var(--card-color);
+    padding: 20px;
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#inventory-display, #dharmic-profile {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 15px;
+}
+
+#inventory-display h3, #dharmic-profile h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+#inventory-display ul, #dharmic-profile ul {
+    list-style-type: none;
+}
+
+#inventory-display li, #dharmic-profile li {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#save-game {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    margin-top: auto;
+}
+
+#save-game:hover {
+    background-color: #388e3c;
+}
+
+/* Character Creation */
+#character-creation {
+    padding: 20px 0;
+}
+
+.nakshatra-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nakshatra-card {
+    background-color: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nakshatra-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.nakshatra-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Game Menu */
+.game-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 40px auto;
+}
+
+.menu-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+}
+
+.menu-button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* About Screen */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.about-content h3 {
+    color: var(--secondary-color);
+    margin: 20px 0 10px;
+}
+
+.about-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #game-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar";
+        height: auto;
+    }
+
+    #game-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+}

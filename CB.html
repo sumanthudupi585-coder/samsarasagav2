@@ -7,10 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-
+    <!-- Custom Cursor -->
     <div id="cursor-container">
         <svg class="chakra-cursor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e09658" stroke-width="1">
             <circle cx="12" cy="12" r="10"/>
@@ -32,21 +37,64 @@
         </svg>
     </div>
 
-    <main class="oracle-container">
+    <!-- Page Transition Effect -->
+    <div class="page-transition">
+        <div class="page-transition-content">
+            <div class="page-transition-mandala">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="30" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="15" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="5" fill="#e09658"/>
+                </svg>
+            </div>
+        </div>
+    </div>
 
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="SS.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <div class="nav-title">The Oracle Within</div>
+        <div class="nav-progress">
+            <div class="progress-dots">
+                <span class="progress-dot active" data-step="1"></span>
+                <span class="progress-dot" data-step="2"></span>
+                <span class="progress-dot" data-step="3"></span>
+                <span class="progress-dot" data-step="4"></span>
+                <span class="progress-dot" data-step="5"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="oracle-container">
         <!-- Question 1: Gana -->
         <div class="screen active" id="q1">
             <h2 class="screen-title">The Oracle Within</h2>
             <p class="screen-subtitle">How do you fundamentally perceive the world and your place in it?</p>
             <div class="options-grid">
                 <button class="option" data-value="Deva">
-                    You believe success is achieved by aligning with a higher cosmic order and following established principles of compassion and peace.
+                    <div class="option-icon"><i class="fas fa-sun"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Divine Harmony</div>
+                        <div class="option-description">You believe success is achieved by aligning with a higher cosmic order and following established principles of compassion and peace.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Manushya">
-                    You believe success is achieved through pragmatic effort, social negotiation, and balancing personal needs with community responsibilities.
+                    <div class="option-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Human Balance</div>
+                        <div class="option-description">You believe success is achieved through pragmatic effort, social negotiation, and balancing personal needs with community responsibilities.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Rakshasa">
-                    You believe reality is shaped by individual will, and one must assert their own power and intuition—even if it means breaking the rules.
+                    <div class="option-icon"><i class="fas fa-fire"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Primal Power</div>
+                        <div class="option-description">You believe reality is shaped by individual will, and one must assert their own power and intuition—even if it means breaking the rules.</div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -57,13 +105,25 @@
             <p class="screen-subtitle">Looking at the broad arc of your life, what seems to be its central theme?</p>
             <div class="options-grid">
                 <button class="option" data-value="Rajas">
-                    A life of constant action, creation, ambition, and a drive to make your mark on the world.
+                    <div class="option-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Dynamic Action</div>
+                        <div class="option-description">A life of constant action, creation, ambition, and a drive to make your mark on the world.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Tamas">
-                    A life focused on building, stabilizing, and deeply engaging with the material, tangible aspects of existence.
+                    <div class="option-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Stable Foundation</div>
+                        <div class="option-description">A life focused on building, stabilizing, and deeply engaging with the material, tangible aspects of existence.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Sattva">
-                    A life with a persistent, underlying current pulling you toward knowledge, clarity, and a reality beyond the material.
+                    <div class="option-icon"><i class="fas fa-feather"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Luminous Clarity</div>
+                        <div class="option-description">A life with a persistent, underlying current pulling you toward knowledge, clarity, and a reality beyond the material.</div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -83,16 +143,32 @@
             <p class="screen-subtitle">When faced with a major life decision, what is your ultimate compass?</p>
             <div class="options-grid">
                 <button class="option" data-value="Dharma">
-                    The call of your highest principles and sense of duty.
+                    <div class="option-icon"><i class="fas fa-compass"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Higher Purpose</div>
+                        <div class="option-description">The call of your highest principles and sense of duty.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Artha">
-                    The practical need for resources and a stable foundation.
+                    <div class="option-icon"><i class="fas fa-gem"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Material Security</div>
+                        <div class="option-description">The practical need for resources and a stable foundation.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Kama">
-                    The drive for connection, pleasure, and fulfillment of desires.
+                    <div class="option-icon"><i class="fas fa-heart"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Emotional Fulfillment</div>
+                        <div class="option-description">The drive for connection, pleasure, and fulfillment of desires.</div>
+                    </div>
                 </button>
-                 <button class="option" data-value="Moksha">
-                    The underlying pull towards emotional peace and ultimate freedom.
+                <button class="option" data-value="Moksha">
+                    <div class="option-icon"><i class="fas fa-dove"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Ultimate Freedom</div>
+                        <div class="option-description">The underlying pull towards emotional peace and ultimate freedom.</div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -103,13 +179,25 @@
             <p class="screen-subtitle">In your day-to-day existence, what is your default mode of being?</p>
             <div class="options-grid">
                 <button class="option" data-value="Sattva">
-                    Driven by a need for harmony, clarity, and peace.
+                    <div class="option-icon"><i class="fas fa-feather"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Harmonious Balance</div>
+                        <div class="option-description">Driven by a need for harmony, clarity, and peace.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Rajas">
-                    Propelled by passion, ambition, and a constant need to be doing something.
+                    <div class="option-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Passionate Drive</div>
+                        <div class="option-description">Propelled by passion, ambition, and a constant need to be doing something.</div>
+                    </div>
                 </button>
                 <button class="option" data-value="Tamas">
-                    A state of inertia, where it takes significant force to change your course.
+                    <div class="option-icon"><i class="fas fa-mountain"></i></div>
+                    <div class="option-content">
+                        <div class="option-title">Grounded Stability</div>
+                        <div class="option-description">A state of inertia, where it takes significant force to change your course.</div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -117,26 +205,103 @@
         <!-- Result Screen -->
         <div class="screen" id="result-screen">
             <div class="result-content">
-                <h1 class="result-nakshatra-name" id="result-name"></h1>
-                <p class="result-symbol-deity" id="result-symbol"></p>
+                <div class="result-header">
+                    <div class="nakshatra-symbol">
+                        <div class="glow"></div>
+                        <svg viewBox="0 0 100 100" id="nakshatra-svg"></svg>
+                    </div>
+                    <h1 class="result-nakshatra-name" id="result-name"></h1>
+                    <p class="result-symbol-deity" id="result-symbol"></p>
+                </div>
+                
                 <div class="result-profile">
                     <div class="profile-item">
                         <div class="profile-title">Core Power (Shakti)</div>
                         <div id="result-shakti"></div>
                     </div>
+                    
                     <div class="profile-item">
                         <div class="profile-title">Primary Motivation (Pada)</div>
-                        <div id="result-pada"></div>
+                        <div class="pada-visualization">
+                            <div class="pada-item pada-dharma" id="pada-dharma">
+                                <div class="pada-icon"><i class="fas fa-compass"></i></div>
+                                <div class="pada-name">Dharma</div>
+                            </div>
+                            <div class="pada-item pada-artha" id="pada-artha">
+                                <div class="pada-icon"><i class="fas fa-gem"></i></div>
+                                <div class="pada-name">Artha</div>
+                            </div>
+                            <div class="pada-item pada-kama" id="pada-kama">
+                                <div class="pada-icon"><i class="fas fa-heart"></i></div>
+                                <div class="pada-name">Kama</div>
+                            </div>
+                            <div class="pada-item pada-moksha" id="pada-moksha">
+                                <div class="pada-icon"><i class="fas fa-dove"></i></div>
+                                <div class="pada-name">Moksha</div>
+                            </div>
+                        </div>
+                        <div id="result-pada" class="pada-description"></div>
                     </div>
+                    
                     <div class="profile-item">
-                        <div class="profile-title">Daily Energy (Guna)</div>
-                        <div id="result-guna3"></div>
+                        <div class="profile-title">Energetic Balance (Gunas)</div>
+                        <div class="gunas-grid">
+                            <div class="guna-item">
+                                <div class="guna-name">Sattva</div>
+                                <div class="guna-icon"><i class="fas fa-feather"></i></div>
+                                <div class="guna-value" id="sattva-value">0</div>
+                            </div>
+                            <div class="guna-item">
+                                <div class="guna-name">Rajas</div>
+                                <div class="guna-icon"><i class="fas fa-bolt"></i></div>
+                                <div class="guna-value" id="rajas-value">0</div>
+                            </div>
+                            <div class="guna-item">
+                                <div class="guna-name">Tamas</div>
+                                <div class="guna-icon"><i class="fas fa-mountain"></i></div>
+                                <div class="guna-value" id="tamas-value">0</div>
+                            </div>
+                        </div>
+                        <div id="result-guna3" class="guna-description"></div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-title">Cosmic Group (Gana)</div>
+                        <div class="gana-indicator" id="gana-indicator">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-title">Elemental Alignment</div>
+                        <div class="elemental-alignment">
+                            <div class="element earth" id="element-earth">
+                                <div class="element-icon"><i class="fas fa-mountain"></i></div>
+                                <div class="element-name">Earth</div>
+                            </div>
+                            <div class="element water" id="element-water">
+                                <div class="element-icon"><i class="fas fa-water"></i></div>
+                                <div class="element-name">Water</div>
+                            </div>
+                            <div class="element fire" id="element-fire">
+                                <div class="element-icon"><i class="fas fa-fire"></i></div>
+                                <div class="element-name">Fire</div>
+                            </div>
+                            <div class="element air" id="element-air">
+                                <div class="element-icon"><i class="fas fa-wind"></i></div>
+                                <div class="element-name">Air</div>
+                            </div>
+                            <div class="element ether" id="element-ether">
+                                <div class="element-icon"><i class="fas fa-star"></i></div>
+                                <div class="element-name">Ether</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                 <button id="action-button">Begin the Journey</button>
+                
+                <button id="action-button">Begin the Journey</button>
             </div>
         </div>
-
     </main>
 
     <script>
@@ -190,33 +355,33 @@
         };
 
         const nakshatraData = {
-            1: { name: 'Ashwini', deity: 'Ashvins', symbol: "Horse's Head", shakti: 'To heal quickly' },
-            2: { name: 'Bharani', deity: 'Yama', symbol: 'Yoni', shakti: 'To renew and purify' },
-            3: { name: 'Krittika', deity: 'Agni', symbol: 'Knife or Spear', shakti: 'To burn illusion' },
-            4: { name: 'Rohini', deity: 'Brahma', symbol: 'Cart or Chariot', shakti: 'To make things grow' },
-            5: { name: 'Mrigashira', deity: 'Soma', symbol: "Deer's Head", shakti: 'To find fulfillment' },
-            6: { name: 'Ardra', deity: 'Rudra', symbol: 'Teardrop', shakti: 'To feel and act' },
-            7: { name: 'Punarvasu', deity: 'Aditi', symbol: 'Bow and Quiver', shakti: 'To regenerate and recover' },
-            8: { name: 'Pushya', deity: 'Brihaspati', symbol: "Cow's Udder", shakti: 'To create spiritual energy' },
-            9: { name: 'Ashlesha', deity: 'Nagas', symbol: 'Serpent', shakti: 'To poison and heal' },
-            10: { name: 'Magha', deity: 'Pitrs', symbol: 'Royal Throne', shakti: 'To leave the body' },
-            11: { name: 'Purva Phalguni', deity: 'Bhaga', symbol: 'Front Legs of Bed', shakti: 'To find love and enjoyment' },
-            12: { name: 'Uttara Phalguni', deity: 'Aryaman', symbol: 'Four Legs of Bed', shakti: 'To accumulate security' },
-            13: { name: 'Hasta', deity: 'Savitri', symbol: 'Hand or Fist', shakti: 'To manifest desires' },
-            14: { name: 'Chitra', deity: 'Tvastar', symbol: 'Bright Jewel', shakti: 'To accumulate merit' },
-            15: { name: 'Swati', deity: 'Vayu', symbol: 'Shoot of a Plant', shakti: 'To scatter like the wind' },
-            16: { name: 'Vishakha', deity: 'Indra-Agni', symbol: 'Triumphal Archway', shakti: 'To achieve many things' },
-            17: { name: 'Anuradha', deity: 'Mitra', symbol: 'Lotus Flower', shakti: 'To worship (Bhakti)' },
-            18: { name: 'Jyeshtha', deity: 'Indra', symbol: 'Umbrella', shakti: 'To rise and conquer' },
-            19: { name: 'Mula', deity: 'Nirriti', symbol: 'Tied Bundle of Roots', shakti: 'To ruin or destroy' },
-            20: { name: 'Purva Ashadha', deity: 'Apas (Water)', symbol: 'Fan', shakti: 'To invigorate or strengthen' },
-            21: { name: 'Uttara Ashadha', deity: 'Visvedevas', symbol: 'Elephant Tusk', shakti: 'To win for the highest good' },
-            22: { name: 'Shravana', deity: 'Vishnu', symbol: 'Ear', shakti: 'To connect' },
-            23: { name: 'Dhanishtha', deity: 'Vasus', symbol: 'Drum or Flute', shakti: 'To give fame and abundance' },
-            24: { name: 'Shatabhisha', deity: 'Varuna', symbol: 'Empty Circle', shakti: 'To heal and support' },
-            25: { name: 'Purva Bhadrapada', deity: 'Aja Ekapada', symbol: 'Two Front Legs of Cot', shakti: 'To raise a person up' },
-            26: { name: 'Uttara Bhadrapada', deity: 'Ahir Budhyana', symbol: 'Back Legs of Cot', shakti: 'To bring rain and stability' },
-            27: { name: 'Revati', deity: 'Pushan', symbol: 'Pair of Fish', shakti: 'To nourish and transcend' },
+            1: { name: 'Ashwini', deity: 'Ashvins', symbol: "Horse's Head", shakti: 'To heal quickly', element: 'fire', rulingPlanet: 'Ketu' },
+            2: { name: 'Bharani', deity: 'Yama', symbol: 'Yoni', shakti: 'To renew and purify', element: 'earth', rulingPlanet: 'Venus' },
+            3: { name: 'Krittika', deity: 'Agni', symbol: 'Knife or Spear', shakti: 'To burn illusion', element: 'fire', rulingPlanet: 'Sun' },
+            4: { name: 'Rohini', deity: 'Brahma', symbol: 'Cart or Chariot', shakti: 'To make things grow', element: 'earth', rulingPlanet: 'Moon' },
+            5: { name: 'Mrigashira', deity: 'Soma', symbol: "Deer's Head", shakti: 'To find fulfillment', element: 'air', rulingPlanet: 'Mars' },
+            6: { name: 'Ardra', deity: 'Rudra', symbol: 'Teardrop', shakti: 'To feel and act', element: 'water', rulingPlanet: 'Rahu' },
+            7: { name: 'Punarvasu', deity: 'Aditi', symbol: 'Bow and Quiver', shakti: 'To regenerate and recover', element: 'air', rulingPlanet: 'Jupiter' },
+            8: { name: 'Pushya', deity: 'Brihaspati', symbol: "Cow's Udder", shakti: 'To create spiritual energy', element: 'water', rulingPlanet: 'Saturn' },
+            9: { name: 'Ashlesha', deity: 'Nagas', symbol: 'Serpent', shakti: 'To poison and heal', element: 'water', rulingPlanet: 'Mercury' },
+            10: { name: 'Magha', deity: 'Pitrs', symbol: 'Royal Throne', shakti: 'To leave the body', element: 'fire', rulingPlanet: 'Ketu' },
+            11: { name: 'Purva Phalguni', deity: 'Bhaga', symbol: 'Front Legs of Bed', shakti: 'To find love and enjoyment', element: 'fire', rulingPlanet: 'Venus' },
+            12: { name: 'Uttara Phalguni', deity: 'Aryaman', symbol: 'Four Legs of Bed', shakti: 'To accumulate security', element: 'fire', rulingPlanet: 'Sun' },
+            13: { name: 'Hasta', deity: 'Savitri', symbol: 'Hand or Fist', shakti: 'To manifest desires', element: 'earth', rulingPlanet: 'Moon' },
+            14: { name: 'Chitra', deity: 'Tvastar', symbol: 'Bright Jewel', shakti: 'To accumulate merit', element: 'air', rulingPlanet: 'Mars' },
+            15: { name: 'Swati', deity: 'Vayu', symbol: 'Shoot of a Plant', shakti: 'To scatter like the wind', element: 'air', rulingPlanet: 'Rahu' },
+            16: { name: 'Vishakha', deity: 'Indra-Agni', symbol: 'Triumphal Archway', shakti: 'To achieve many things', element: 'fire', rulingPlanet: 'Jupiter' },
+            17: { name: 'Anuradha', deity: 'Mitra', symbol: 'Lotus Flower', shakti: 'To worship (Bhakti)', element: 'earth', rulingPlanet: 'Saturn' },
+            18: { name: 'Jyeshtha', deity: 'Indra', symbol: 'Umbrella', shakti: 'To rise and conquer', element: 'earth', rulingPlanet: 'Mercury' },
+            19: { name: 'Mula', deity: 'Nirriti', symbol: 'Tied Bundle of Roots', shakti: 'To ruin or destroy', element: 'water', rulingPlanet: 'Ketu' },
+            20: { name: 'Purva Ashadha', deity: 'Apas (Water)', symbol: 'Fan', shakti: 'To invigorate or strengthen', element: 'water', rulingPlanet: 'Venus' },
+            21: { name: 'Uttara Ashadha', deity: 'Visvedevas', symbol: 'Elephant Tusk', shakti: 'To win for the highest good', element: 'earth', rulingPlanet: 'Sun' },
+            22: { name: 'Shravana', deity: 'Vishnu', symbol: 'Ear', shakti: 'To connect', element: 'air', rulingPlanet: 'Moon' },
+            23: { name: 'Dhanishtha', deity: 'Vasus', symbol: 'Drum or Flute', shakti: 'To give fame and abundance', element: 'fire', rulingPlanet: 'Mars' },
+            24: { name: 'Shatabhisha', deity: 'Varuna', symbol: 'Empty Circle', shakti: 'To heal and support', element: 'water', rulingPlanet: 'Rahu' },
+            25: { name: 'Purva Bhadrapada', deity: 'Aja Ekapada', symbol: 'Two Front Legs of Cot', shakti: 'To raise a person up', element: 'fire', rulingPlanet: 'Jupiter' },
+            26: { name: 'Uttara Bhadrapada', deity: 'Ahir Budhyana', symbol: 'Back Legs of Cot', shakti: 'To bring rain and stability', element: 'water', rulingPlanet: 'Saturn' },
+            27: { name: 'Revati', deity: 'Pushan', symbol: 'Pair of Fish', shakti: 'To nourish and transcend', element: 'water', rulingPlanet: 'Mercury' },
         };
 
         const refiningText = {
@@ -231,6 +396,37 @@
                 Rajas: 'Your default state is one of passion, ambition, and action.',
                 Tamas: 'Your default state is one of stability and inertia.',
             }
+        };
+
+        // Nakshatra symbol SVG paths
+        const nakshatraSvgPaths = {
+            1: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,30 Q50,10 70,30 Q80,50 70,70 Q50,90 30,70 Q20,50 30,30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            2: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><ellipse cx="50" cy="50" rx="20" ry="30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            3: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="30" x2="70" y2="70" stroke="#e09658" stroke-width="2"/><line x1="30" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            4: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><rect x="30" y="30" width="40" height="40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            5: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 Q50,20 70,50 Q50,80 30,50" stroke="#e09658" stroke-width="2" fill="none"/>',
+            6: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M50,30 Q70,50 50,70 Q30,50 50,30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            7: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 L70,50 M50,30 L50,70" stroke="#e09658" stroke-width="2"/>',
+            8: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="#e09658" stroke-width="2" fill="none"/>',
+            9: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,70 Q50,30 70,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            10: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><rect x="35" y="35" width="30" height="30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            11: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="70" x2="70" y2="70" stroke="#e09658" stroke-width="2"/><line x1="30" y1="70" x2="30" y2="30" stroke="#e09658" stroke-width="2"/><line x1="70" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            12: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><rect x="30" y="30" width="40" height="40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            13: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 L70,50 M30,40 L70,40 M30,60 L70,60" stroke="#e09658" stroke-width="2"/>',
+            14: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><polygon points="50,20 60,40 80,40 65,55 70,75 50,65 30,75 35,55 20,40 40,40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            15: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M50,30 Q60,50 50,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            16: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,70 L50,30 L70,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            17: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M50,30 C70,40 70,60 50,70 C30,60 30,40 50,30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            18: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M40,30 L60,30 L60,70 L40,70 Z" stroke="#e09658" stroke-width="2" fill="none"/>',
+            19: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,30 Q50,50 30,70 M70,30 Q50,50 70,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            20: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,40 Q50,20 70,40 Q50,60 30,40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            21: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M40,30 C60,40 60,60 40,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            22: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 C40,30 60,30 70,50 C60,70 40,70 30,50" stroke="#e09658" stroke-width="2" fill="none"/>',
+            23: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="15" stroke="#e09658" stroke-width="2" fill="none"/>',
+            24: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="#e09658" stroke-width="2" fill="none"/>',
+            25: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="70" x2="30" y2="30" stroke="#e09658" stroke-width="2"/><line x1="70" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            26: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="70" x2="70" y2="70" stroke="#e09658" stroke-width="2"/><line x1="30" y1="70" x2="30" y2="30" stroke="#e09658" stroke-width="2"/><line x1="70" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            27: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,40 Q50,20 70,40 M30,60 Q50,80 70,60" stroke="#e09658" stroke-width="2" fill="none"/>',
         };
 
         // --- LOGIC ---
@@ -251,6 +447,26 @@
                  nextScreen.classList.add('active');
             }
             currentQuestion = screenId;
+            
+            // Update progress dots
+            updateProgressDots(screenId);
+        }
+        
+        function updateProgressDots(screenId) {
+            const step = parseInt(screenId.replace('q', ''));
+            const dots = document.querySelectorAll('.progress-dot');
+            
+            dots.forEach((dot, index) => {
+                if (index + 1 < step) {
+                    dot.classList.add('completed');
+                    dot.classList.remove('active');
+                } else if (index + 1 === step) {
+                    dot.classList.add('active');
+                    dot.classList.remove('completed');
+                } else {
+                    dot.classList.remove('active', 'completed');
+                }
+            });
         }
         
         function populateShaktiQuestion() {
@@ -264,39 +480,143 @@
                     const button = document.createElement('button');
                     button.className = 'option';
                     button.dataset.value = opt.result;
-                    button.textContent = opt.text;
+                    
+                    // Create option content with icon
+                    const optionHTML = `
+                        <div class="option-icon"><i class="fas fa-star"></i></div>
+                        <div class="option-content">
+                            <div class="option-description">${opt.text}</div>
+                        </div>
+                    `;
+                    button.innerHTML = optionHTML;
                     container.appendChild(button);
                 });
             }
         }
         
         function showResult() {
-            const result = nakshatraData[userAnswers.nakshatraNum];
+            const nakshatraNum = userAnswers.nakshatraNum;
+            const result = nakshatraData[nakshatraNum];
+            
+            // Set basic information
             document.getElementById('result-name').textContent = result.name;
             document.getElementById('result-symbol').textContent = `Symbol: ${result.symbol} • Deity: ${result.deity}`;
             document.getElementById('result-shakti').textContent = result.shakti;
             document.getElementById('result-pada').textContent = refiningText.pada[userAnswers.pada];
             document.getElementById('result-guna3').textContent = refiningText.guna3[userAnswers.guna3];
+            
+            // Set Nakshatra symbol
+            const svgElement = document.getElementById('nakshatra-svg');
+            svgElement.innerHTML = nakshatraSvgPaths[nakshatraNum] || '';
+            
+            // Set Pada visualization
+            const padaElements = document.querySelectorAll('.pada-item');
+            padaElements.forEach(el => el.classList.remove('active'));
+            document.getElementById(`pada-${userAnswers.pada.toLowerCase()}`).classList.add('active');
+            
+            // Set Guna values
+            setGunaValues(nakshatraNum);
+            
+            // Set Gana indicator
+            const ganaIndicator = document.getElementById('gana-indicator');
+            ganaIndicator.innerHTML = `
+                <div class="gana-icon"><i class="${getGanaIcon(result.gana)}"></i></div>
+                <div class="gana-name">${result.gana}</div>
+            `;
+            ganaIndicator.className = `gana-indicator gana-${result.gana.toLowerCase()}`;
+            
+            // Set Elemental alignment
+            const elements = document.querySelectorAll('.element');
+            elements.forEach(el => {
+                el.querySelector('.element-icon').classList.remove('active');
+                el.querySelector('.element-name').classList.remove('active');
+            });
+            
+            const activeElement = document.getElementById(`element-${result.element}`);
+            activeElement.querySelector('.element-icon').classList.add('active');
+            activeElement.querySelector('.element-name').classList.add('active');
+            
+            // Show the result screen
             showScreen('result-screen');
+        }
+        
+        function getGanaIcon(gana) {
+            switch(gana) {
+                case 'Deva': return 'fas fa-sun';
+                case 'Manushya': return 'fas fa-handshake';
+                case 'Rakshasa': return 'fas fa-fire';
+                default: return 'fas fa-star';
+            }
+        }
+
+        // Set guna values based on nakshatra number
+        function setGunaValues(nakshatraNum) {
+            let sattva = 0, rajas = 0, tamas = 0;
+            
+            // Simple algorithm to set guna values based on nakshatra number
+            if (nakshatraNum >= 1 && nakshatraNum <= 9) {
+                sattva = 1;
+                rajas = 2;
+                tamas = 0;
+            } else if (nakshatraNum >= 10 && nakshatraNum <= 18) {
+                sattva = 0;
+                rajas = 1;
+                tamas = 2;
+            } else {
+                sattva = 2;
+                rajas = 0;
+                tamas = 1;
+            }
+            
+            // Update the UI
+            document.getElementById('sattva-value').textContent = sattva;
+            document.getElementById('rajas-value').textContent = rajas;
+            document.getElementById('tamas-value').textContent = tamas;
         }
 
         document.querySelector('.oracle-container').addEventListener('click', (e) => {
-            if (!e.target.matches('.option')) return;
+            if (!e.target.matches('.option') && !e.target.closest('.option')) return;
             
-            const button = e.target;
+            const button = e.target.matches('.option') ? e.target : e.target.closest('.option');
             const value = button.dataset.value;
-
-            switch(currentQuestion) {
-                case 'q1': userAnswers.gana = value; showScreen('q2'); break;
-                case 'q2': userAnswers.guna1 = value; populateShaktiQuestion(); showScreen('q3'); break;
-                case 'q3': userAnswers.nakshatraNum = value; showScreen('q4'); break;
-                case 'q4': userAnswers.pada = value; showScreen('q5'); break;
-                case 'q5': userAnswers.guna3 = value; showResult(); break;
-            }
+            
+            // Add selection animation
+            button.classList.add('choice-selected');
+            
+            // Wait for animation to complete before proceeding
+            setTimeout(() => {
+                switch(currentQuestion) {
+                    case 'q1': 
+                        userAnswers.gana = value; 
+                        showScreen('q2'); 
+                        break;
+                    case 'q2': 
+                        userAnswers.guna1 = value; 
+                        populateShaktiQuestion(); 
+                        showScreen('q3'); 
+                        break;
+                    case 'q3': 
+                        userAnswers.nakshatraNum = value; 
+                        showScreen('q4'); 
+                        break;
+                    case 'q4': 
+                        userAnswers.pada = value; 
+                        showScreen('q5'); 
+                        break;
+                    case 'q5': 
+                        userAnswers.guna3 = value; 
+                        showResult(); 
+                        break;
+                }
+            }, 500);
         });
 
-        // Event listener for the new "Begin the Journey" button
+        // Event listener for the "Begin the Journey" button
         document.getElementById('action-button').addEventListener('click', () => {
+            // Show page transition
+            const transition = document.querySelector('.page-transition');
+            transition.classList.add('active');
+            
             // Construct the URL with query parameters for the next screen
             const params = new URLSearchParams({
                 nakshatra: userAnswers.nakshatraNum,
@@ -304,13 +624,13 @@
                 guna3: userAnswers.guna3
             }).toString();
             
-            // Redirect to the next screen (you will create this HTML file later)
-            // For now, it will just try to navigate.
-            window.location.href = `character-profile.html?${params}`;
+            // Navigate after animation
+            setTimeout(() => {
+                window.location.href = `character-profile.html?${params}`;
+            }, 1000);
         });
 
-    </script>
-    <script>
+        // Custom cursor functionality
         document.addEventListener('DOMContentLoaded', () => {
             // Check if the device has a fine pointer (e.g., a mouse)
             if (window.matchMedia('(pointer: fine)').matches) {
@@ -325,16 +645,16 @@
                     }
                 });
 
-                document.body.addEventListener('mouseover', (e) => {
-                    if (e.target.matches('a, button, .option, .mandala-link')) {
+                document.addEventListener('mouseover', (e) => {
+                    if (e.target.matches('a, button, .option, .mandala-link') || e.target.closest('.option')) {
                         if (cursorContainer) {
                             cursorContainer.classList.add('active');
                         }
                     }
                 });
 
-                document.body.addEventListener('mouseout', (e) => {
-                    if (e.target.matches('a, button, .option, .mandala-link')) {
+                document.addEventListener('mouseout', (e) => {
+                    if (e.target.matches('a, button, .option, .mandala-link') || e.target.closest('.option')) {
                         if (cursorContainer) {
                             cursorContainer.classList.remove('active');
                         }
@@ -344,5 +664,144 @@
         });
     </script>
 
+    <style>
+        /* Additional styles specific to the character builder */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            border-bottom: 1px solid var(--color-bronze);
+        }
+        
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-bronze-glow);
+        }
+        
+        .nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-bronze-glow);
+        }
+        
+        .nav-progress {
+            min-width: 120px;
+        }
+        
+        .progress-dots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        .progress-dot.active {
+            background-color: var(--color-bronze-glow);
+            transform: scale(1.2);
+            box-shadow: 0 0 10px var(--color-bronze);
+        }
+        
+        .progress-dot.completed {
+            background-color: var(--color-bronze);
+        }
+        
+        /* Enhanced option styling */
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        
+        .option-icon {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(169, 113, 66, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-bronze-glow);
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover .option-icon {
+            background-color: rgba(224, 150, 88, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .option-content {
+            flex-grow: 1;
+        }
+        
+        .option-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            color: var(--color-bronze-glow);
+        }
+        
+        /* Result content styling */
+        .result-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .result-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .pada-description, .guna-description {
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+            text-align: center;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-title {
+                font-size: 1.4rem;
+            }
+            
+            .option {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .option-icon {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
 </body>
 </html>

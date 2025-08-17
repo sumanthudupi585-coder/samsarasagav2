@@ -3,70 +3,938 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samsara Saga</title>
+    <title>Samsara Saga - Journey Through Existence</title>
     
     <!-- Link to Google Fonts from the theme file -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
     
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/gameplay.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Link to the external CSS files -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/character-traits.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-
-    <!-- 
-      Custom Cursor Component
-      This div follows the mouse and contains the SVG for the custom cursor.
-      Its active state (glow and rotation) is handled in the CSS.
-    -->
+    <!-- Custom Cursor -->
     <div id="cursor-container">
         <svg class="chakra-cursor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e09658" stroke-width="1">
             <circle cx="12" cy="12" r="10"/>
             <g transform="translate(12,12)">
-                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(0)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(30)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(60)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(90)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(120)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(150)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(180)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(210)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(240)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(270)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(300)"/><path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(330)"/></g>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(0)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(30)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(60)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(90)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(120)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(150)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(180)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(210)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(240)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(270)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(300)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(330)"/>
+            </g>
             <circle cx="12" cy="12" r="2" fill="#e09658"/>
         </svg>
     </div>
 
+    <!-- Page Transition Effect -->
+    <div class="page-transition">
+        <div class="page-transition-content">
+            <div class="page-transition-mandala">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="30" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="15" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="5" fill="#e09658"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="SS.html" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <div class="nav-title">Samsara Saga</div>
+        <a href="#" class="nav-link" id="menu-button">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </a>
+    </nav>
+
     <!-- Main wrapper for the entire game interface -->
     <div class="game-wrapper">
-        
         <!-- Main content area for narrative and choices (Left Column) -->
         <main>
-            <div id="story-text">
-                <p>The cycle turns...</p>
+            <div id="story-container">
+                <div id="story-text" class="text-fade-in">
+                    <p>The cycle turns...</p>
+                    <p>You find yourself at the beginning of a new journey, your past lives echoing in the chambers of your consciousness like distant whispers.</p>
+                    <p>The path ahead is shrouded in mist, but your <span class="highlight-text" id="nakshatra-name">Nakshatra</span> nature guides you forward, illuminating the way with its unique light.</p>
+                </div>
+                <div id="story-decoration" class="mandala-decoration">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="#e09658" stroke-width="0.5" fill="none"/>
+                        <circle cx="50" cy="50" r="30" stroke="#e09658" stroke-width="0.5" fill="none"/>
+                        <circle cx="50" cy="50" r="15" stroke="#e09658" stroke-width="0.5" fill="none"/>
+                        <circle cx="50" cy="50" r="5" stroke="#e09658" stroke-width="0.5" fill="none"/>
+                    </svg>
+                </div>
             </div>
-            <div id="choices-container">
+            <div id="choices-container" class="text-fade-in-delay-1">
                 <!-- Player choices will be dynamically inserted here -->
+                <button class="choice-button">
+                    <div class="choice-icon"><i class="fas fa-walking"></i></div>
+                    <div class="choice-content">Begin your journey with mindful steps, observing the world around you.</div>
+                </button>
+                <button class="choice-button">
+                    <div class="choice-icon"><i class="fas fa-eye"></i></div>
+                    <div class="choice-content">Close your eyes and turn inward, seeking guidance from your inner wisdom.</div>
+                </button>
+                <button class="choice-button">
+                    <div class="choice-icon"><i class="fas fa-comments"></i></div>
+                    <div class="choice-content">Call out to see if anyone else is nearby who might offer guidance.</div>
+                </button>
             </div>
         </main>
         
         <!-- Sidebar for player stats and game controls (Right Column) -->
         <aside>
-            <h2 class="status-panel-title">Jiva Profile</h2>
+            <div class="character-summary">
+                <div class="character-symbol">
+                    <svg viewBox="0 0 100 100" id="character-symbol-svg"></svg>
+                </div>
+                <h2 class="character-name" id="character-name">Jiva</h2>
+            </div>
+            
+            <h3 class="status-panel-title">Spiritual Attributes</h3>
             
             <div class="stats-grid">
-                <div class="stat-item"><span>Karma</span> <span id="karma-value">-</span></div>
-                <div class="stat-item"><span>Sattva</span> <span id="sattva-value">-</span></div>
-                <div class="stat-item"><span>Rajas</span> <span id="rajas-value">-</span></div>
-                <div class="stat-item"><span>Tamas</span> <span id="tamas-value">-</span></div>
+                <div class="stat-item karma-stat">
+                    <span>Karma</span> 
+                    <span id="karma-value" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Sattva</span> 
+                    <span id="sattva-value" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Rajas</span> 
+                    <span id="rajas-value" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Tamas</span> 
+                    <span id="tamas-value" class="stat-value">0</span>
+                </div>
+            </div>
+            
+            <div class="element-indicator">
+                <div class="element-title">Element</div>
+                <div class="element-display" id="element-display">
+                    <!-- Will be populated by JavaScript -->
+                </div>
             </div>
             
             <h3 class="status-panel-title">Inventory</h3>
             <ul id="inventory-list">
-                <li>(Empty)</li>
+                <li class="inventory-empty">(Empty)</li>
             </ul>
 
             <div class="game-controls">
-                 <button class="control-button" id="new-game-btn">Begin Anew</button>
+                <button class="control-button" id="new-game-btn">Begin Anew</button>
             </div>
         </aside>
     </div>
 
-    <!-- JavaScript Module Loading -->
-    <script type="module" src="js/main.js"></script>
-    
+    <!-- Game Menu Modal -->
+    <div class="modal" id="game-menu-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Game Menu</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="menu-buttons">
+                    <button class="menu-button" id="character-profile-btn">
+                        <i class="fas fa-user"></i>
+                        <span>Character Profile</span>
+                    </button>
+                    <button class="menu-button" id="save-game-btn">
+                        <i class="fas fa-save"></i>
+                        <span>Save Game</span>
+                    </button>
+                    <button class="menu-button" id="load-game-btn">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Load Game</span>
+                    </button>
+                    <button class="menu-button" id="settings-btn">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                    <button class="menu-button" id="help-btn">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Help</span>
+                    </button>
+                    <button class="menu-button" id="exit-game-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Exit to Main Menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div id="notification-container"></div>
+
+    <script>
+        // Nakshatra data
+        const nakshatraData = {
+            1: { name: 'Ashwini', deity: 'Ashvins', symbol: "Horse's Head", shakti: 'To heal quickly', element: 'fire', gana: 'Deva', rulingPlanet: 'Ketu' },
+            2: { name: 'Bharani', deity: 'Yama', symbol: 'Yoni', shakti: 'To renew and purify', element: 'earth', gana: 'Manushya', rulingPlanet: 'Venus' },
+            3: { name: 'Krittika', deity: 'Agni', symbol: 'Knife or Spear', shakti: 'To burn illusion', element: 'fire', gana: 'Rakshasa', rulingPlanet: 'Sun' },
+            4: { name: 'Rohini', deity: 'Brahma', symbol: 'Cart or Chariot', shakti: 'To make things grow', element: 'earth', gana: 'Manushya', rulingPlanet: 'Moon' },
+            5: { name: 'Mrigashira', deity: 'Soma', symbol: "Deer's Head", shakti: 'To find fulfillment', element: 'air', gana: 'Deva', rulingPlanet: 'Mars' },
+            6: { name: 'Ardra', deity: 'Rudra', symbol: 'Teardrop', shakti: 'To feel and act', element: 'water', gana: 'Manushya', rulingPlanet: 'Rahu' },
+            7: { name: 'Punarvasu', deity: 'Aditi', symbol: 'Bow and Quiver', shakti: 'To regenerate and recover', element: 'air', gana: 'Deva', rulingPlanet: 'Jupiter' },
+            8: { name: 'Pushya', deity: 'Brihaspati', symbol: "Cow's Udder", shakti: 'To create spiritual energy', element: 'water', gana: 'Deva', rulingPlanet: 'Saturn' },
+            9: { name: 'Ashlesha', deity: 'Nagas', symbol: 'Serpent', shakti: 'To poison and heal', element: 'water', gana: 'Rakshasa', rulingPlanet: 'Mercury' },
+            10: { name: 'Magha', deity: 'Pitrs', symbol: 'Royal Throne', shakti: 'To leave the body', element: 'fire', gana: 'Rakshasa', rulingPlanet: 'Ketu' },
+            11: { name: 'Purva Phalguni', deity: 'Bhaga', symbol: 'Front Legs of Bed', shakti: 'To find love and enjoyment', element: 'fire', gana: 'Manushya', rulingPlanet: 'Venus' },
+            12: { name: 'Uttara Phalguni', deity: 'Aryaman', symbol: 'Four Legs of Bed', shakti: 'To accumulate security', element: 'fire', gana: 'Manushya', rulingPlanet: 'Sun' },
+            13: { name: 'Hasta', deity: 'Savitri', symbol: 'Hand or Fist', shakti: 'To manifest desires', element: 'earth', gana: 'Deva', rulingPlanet: 'Moon' },
+            14: { name: 'Chitra', deity: 'Tvastar', symbol: 'Bright Jewel', shakti: 'To accumulate merit', element: 'air', gana: 'Rakshasa', rulingPlanet: 'Mars' },
+            15: { name: 'Swati', deity: 'Vayu', symbol: 'Shoot of a Plant', shakti: 'To scatter like the wind', element: 'air', gana: 'Deva', rulingPlanet: 'Rahu' },
+            16: { name: 'Vishakha', deity: 'Indra-Agni', symbol: 'Triumphal Archway', shakti: 'To achieve many things', element: 'fire', gana: 'Rakshasa', rulingPlanet: 'Jupiter' },
+            17: { name: 'Anuradha', deity: 'Mitra', symbol: 'Lotus Flower', shakti: 'To worship (Bhakti)', element: 'earth', gana: 'Deva', rulingPlanet: 'Saturn' },
+            18: { name: 'Jyeshtha', deity: 'Indra', symbol: 'Umbrella', shakti: 'To rise and conquer', element: 'earth', gana: 'Rakshasa', rulingPlanet: 'Mercury' },
+            19: { name: 'Mula', deity: 'Nirriti', symbol: 'Tied Bundle of Roots', shakti: 'To ruin or destroy', element: 'water', gana: 'Rakshasa', rulingPlanet: 'Ketu' },
+            20: { name: 'Purva Ashadha', deity: 'Apas (Water)', symbol: 'Fan', shakti: 'To invigorate or strengthen', element: 'water', gana: 'Manushya', rulingPlanet: 'Venus' },
+            21: { name: 'Uttara Ashadha', deity: 'Visvedevas', symbol: 'Elephant Tusk', shakti: 'To win for the highest good', element: 'earth', gana: 'Manushya', rulingPlanet: 'Sun' },
+            22: { name: 'Shravana', deity: 'Vishnu', symbol: 'Ear', shakti: 'To connect', element: 'air', gana: 'Deva', rulingPlanet: 'Moon' },
+            23: { name: 'Dhanishtha', deity: 'Vasus', symbol: 'Drum or Flute', shakti: 'To give fame and abundance', element: 'fire', gana: 'Rakshasa', rulingPlanet: 'Mars' },
+            24: { name: 'Shatabhisha', deity: 'Varuna', symbol: 'Empty Circle', shakti: 'To heal and support', element: 'water', gana: 'Rakshasa', rulingPlanet: 'Rahu' },
+            25: { name: 'Purva Bhadrapada', deity: 'Aja Ekapada', symbol: 'Two Front Legs of Cot', shakti: 'To raise a person up', element: 'fire', gana: 'Manushya', rulingPlanet: 'Jupiter' },
+            26: { name: 'Uttara Bhadrapada', deity: 'Ahir Budhyana', symbol: 'Back Legs of Cot', shakti: 'To bring rain and stability', element: 'water', gana: 'Manushya', rulingPlanet: 'Saturn' },
+            27: { name: 'Revati', deity: 'Pushan', symbol: 'Pair of Fish', shakti: 'To nourish and transcend', element: 'water', gana: 'Deva', rulingPlanet: 'Mercury' },
+        };
+
+        // Nakshatra symbol SVG paths
+        const nakshatraSvgPaths = {
+            1: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,30 Q50,10 70,30 Q80,50 70,70 Q50,90 30,70 Q20,50 30,30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            2: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><ellipse cx="50" cy="50" rx="20" ry="30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            3: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="30" x2="70" y2="70" stroke="#e09658" stroke-width="2"/><line x1="30" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            4: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><rect x="30" y="30" width="40" height="40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            5: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 Q50,20 70,50 Q50,80 30,50" stroke="#e09658" stroke-width="2" fill="none"/>',
+            6: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M50,30 Q70,50 50,70 Q30,50 50,30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            7: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 L70,50 M50,30 L50,70" stroke="#e09658" stroke-width="2"/>',
+            8: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="#e09658" stroke-width="2" fill="none"/>',
+            9: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,70 Q50,30 70,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            10: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><rect x="35" y="35" width="30" height="30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            11: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="70" x2="70" y2="70" stroke="#e09658" stroke-width="2"/><line x1="30" y1="70" x2="30" y2="30" stroke="#e09658" stroke-width="2"/><line x1="70" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            12: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><rect x="30" y="30" width="40" height="40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            13: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 L70,50 M30,40 L70,40 M30,60 L70,60" stroke="#e09658" stroke-width="2"/>',
+            14: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><polygon points="50,20 60,40 80,40 65,55 70,75 50,65 30,75 35,55 20,40 40,40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            15: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M50,30 Q60,50 50,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            16: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,70 L50,30 L70,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            17: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M50,30 C70,40 70,60 50,70 C30,60 30,40 50,30" stroke="#e09658" stroke-width="2" fill="none"/>',
+            18: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M40,30 L60,30 L60,70 L40,70 Z" stroke="#e09658" stroke-width="2" fill="none"/>',
+            19: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,30 Q50,50 30,70 M70,30 Q50,50 70,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            20: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,40 Q50,20 70,40 Q50,60 30,40" stroke="#e09658" stroke-width="2" fill="none"/>',
+            21: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M40,30 C60,40 60,60 40,70" stroke="#e09658" stroke-width="2" fill="none"/>',
+            22: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,50 C40,30 60,30 70,50 C60,70 40,70 30,50" stroke="#e09658" stroke-width="2" fill="none"/>',
+            23: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="15" stroke="#e09658" stroke-width="2" fill="none"/>',
+            24: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><circle cx="50" cy="50" r="20" stroke="#e09658" stroke-width="2" fill="none"/>',
+            25: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="70" x2="30" y2="30" stroke="#e09658" stroke-width="2"/><line x1="70" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            26: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><line x1="30" y1="70" x2="70" y2="70" stroke="#e09658" stroke-width="2"/><line x1="30" y1="70" x2="30" y2="30" stroke="#e09658" stroke-width="2"/><line x1="70" y1="70" x2="70" y2="30" stroke="#e09658" stroke-width="2"/>',
+            27: '<circle cx="50" cy="50" r="40" stroke="#e09658" stroke-width="2" fill="none"/><path d="M30,40 Q50,20 70,40 M30,60 Q50,80 70,60" stroke="#e09658" stroke-width="2" fill="none"/>',
+        };
+
+        // Element icons and animations
+        const elementIcons = {
+            earth: '<i class="fas fa-mountain element-earth-anim"></i>',
+            water: '<i class="fas fa-water element-water-anim"></i>',
+            fire: '<i class="fas fa-fire element-fire-anim"></i>',
+            air: '<i class="fas fa-wind element-air-anim"></i>',
+            ether: '<i class="fas fa-star element-ether-anim"></i>'
+        };
+
+        // Initialize the game
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nakshatraNum = urlParams.get('nakshatra');
+            const pada = urlParams.get('pada');
+            const guna3 = urlParams.get('guna3');
+
+            if (nakshatraNum && nakshatraData[nakshatraNum]) {
+                const nakshatra = nakshatraData[nakshatraNum];
+                
+                // Update character information
+                document.getElementById('character-name').textContent = nakshatra.name;
+                document.getElementById('nakshatra-name').textContent = nakshatra.name;
+                
+                // Set character symbol
+                const symbolSvg = document.getElementById('character-symbol-svg');
+                symbolSvg.innerHTML = nakshatraSvgPaths[nakshatraNum] || '';
+                
+                // Set element display
+                const elementDisplay = document.getElementById('element-display');
+                elementDisplay.innerHTML = `
+                    <div class="element-icon">${elementIcons[nakshatra.element]}</div>
+                    <div class="element-name">${nakshatra.element.charAt(0).toUpperCase() + nakshatra.element.slice(1)}</div>
+                `;
+                elementDisplay.className = `element-display element-${nakshatra.element}`;
+                
+                // Set initial Guna values
+                setGunaValues(nakshatraNum);
+            }
+
+            // Set up menu button
+            document.getElementById('menu-button').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('game-menu-modal').style.display = 'flex';
+            });
+
+            // Set up close modal button
+            document.querySelector('.close-modal').addEventListener('click', () => {
+                document.getElementById('game-menu-modal').style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                const modal = document.getElementById('game-menu-modal');
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Set up menu buttons
+            document.getElementById('character-profile-btn').addEventListener('click', () => {
+                // Show page transition
+                const transition = document.querySelector('.page-transition');
+                transition.classList.add('active');
+                
+                // Navigate after animation
+                setTimeout(() => {
+                    window.location.href = `character-profile.html?${urlParams.toString()}`;
+                }, 1000);
+            });
+
+            document.getElementById('exit-game-btn').addEventListener('click', () => {
+                // Show page transition
+                const transition = document.querySelector('.page-transition');
+                transition.classList.add('active');
+                
+                // Navigate after animation
+                setTimeout(() => {
+                    window.location.href = 'SS.html';
+                }, 1000);
+            });
+
+            document.getElementById('save-game-btn').addEventListener('click', () => {
+                showNotification('Game saved successfully!', 'success');
+                document.getElementById('game-menu-modal').style.display = 'none';
+            });
+
+            document.getElementById('new-game-btn').addEventListener('click', () => {
+                // Show page transition
+                const transition = document.querySelector('.page-transition');
+                transition.classList.add('active');
+                
+                // Navigate after animation
+                setTimeout(() => {
+                    window.location.href = 'CB.html';
+                }, 1000);
+            });
+
+            // Set up choice buttons
+            const choiceButtons = document.querySelectorAll('.choice-button');
+            choiceButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Add selection animation
+                    button.classList.add('choice-selected');
+                    
+                    // Wait for animation to complete before proceeding
+                    setTimeout(() => {
+                        // Update story text
+                        updateStory(button.querySelector('.choice-content').textContent);
+                        
+                        // Update karma (for demonstration)
+                        updateKarma(1);
+                    }, 500);
+                });
+            });
+        });
+
+        // Set guna values based on nakshatra number
+        function setGunaValues(nakshatraNum) {
+            let sattva = 0, rajas = 0, tamas = 0;
+            
+            // Simple algorithm to set guna values based on nakshatra number
+            if (nakshatraNum >= 1 && nakshatraNum <= 9) {
+                sattva = 1;
+                rajas = 2;
+                tamas = 0;
+            } else if (nakshatraNum >= 10 && nakshatraNum <= 18) {
+                sattva = 0;
+                rajas = 1;
+                tamas = 2;
+            } else {
+                sattva = 2;
+                rajas = 0;
+                tamas = 1;
+            }
+            
+            // Update the UI
+            document.getElementById('sattva-value').textContent = sattva;
+            document.getElementById('rajas-value').textContent = rajas;
+            document.getElementById('tamas-value').textContent = tamas;
+        }
+
+        // Update story text
+        function updateStory(choiceText) {
+            const storyText = document.getElementById('story-text');
+            
+            // Fade out current text
+            storyText.classList.add('text-fade-out');
+            
+            setTimeout(() => {
+                // Update text
+                storyText.innerHTML = `
+                    <p>You chose to ${choiceText.toLowerCase()}</p>
+                    <p>As you proceed, the world around you begins to take shape, reflecting the essence of your inner nature.</p>
+                    <p>Your journey has truly begun...</p>
+                `;
+                
+                // Fade in new text
+                storyText.classList.remove('text-fade-out');
+                storyText.classList.add('text-fade-in');
+                
+                // Update choices
+                updateChoices();
+            }, 500);
+        }
+
+        // Update choices
+        function updateChoices() {
+            const choicesContainer = document.getElementById('choices-container');
+            
+            // Fade out current choices
+            choicesContainer.classList.add('text-fade-out');
+            
+            setTimeout(() => {
+                // Update choices
+                choicesContainer.innerHTML = `
+                    <button class="choice-button">
+                        <div class="choice-icon"><i class="fas fa-map-signs"></i></div>
+                        <div class="choice-content">Follow the path that leads toward the distant mountains.</div>
+                    </button>
+                    <button class="choice-button">
+                        <div class="choice-icon"><i class="fas fa-tree"></i></div>
+                        <div class="choice-content">Enter the forest to your right, which seems to whisper ancient secrets.</div>
+                    </button>
+                    <button class="choice-button">
+                        <div class="choice-icon"><i class="fas fa-home"></i></div>
+                        <div class="choice-content">Approach the small dwelling you notice in the distance.</div>
+                    </button>
+                `;
+                
+                // Fade in new choices
+                choicesContainer.classList.remove('text-fade-out');
+                choicesContainer.classList.add('text-fade-in');
+                
+                // Add event listeners to new buttons
+                const newChoiceButtons = document.querySelectorAll('.choice-button');
+                newChoiceButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Add selection animation
+                        button.classList.add('choice-selected');
+                        
+                        // Wait for animation to complete before proceeding
+                        setTimeout(() => {
+                            // Update story text
+                            updateStory(button.querySelector('.choice-content').textContent);
+                            
+                            // Update karma (for demonstration)
+                            updateKarma(1);
+                        }, 500);
+                    });
+                });
+            }, 500);
+        }
+
+        // Update karma
+        function updateKarma(amount) {
+            const karmaValue = document.getElementById('karma-value');
+            const currentKarma = parseInt(karmaValue.textContent);
+            const newKarma = currentKarma + amount;
+            
+            // Add animation class
+            karmaValue.classList.add(amount > 0 ? 'karma-increase' : 'karma-decrease');
+            
+            // Update value
+            setTimeout(() => {
+                karmaValue.textContent = newKarma;
+                
+                // Remove animation class
+                setTimeout(() => {
+                    karmaValue.classList.remove('karma-increase', 'karma-decrease');
+                }, 1000);
+            }, 500);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notification-container');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <div class="notification-icon">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+                    </div>
+                    <div class="notification-message">${message}</div>
+                </div>
+            `;
+            
+            container.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Hide and remove notification after delay
+            setTimeout(() => {
+                notification.classList.remove('show');
+                notification.classList.add('hide');
+                
+                setTimeout(() => {
+                    container.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+
+        // Custom cursor functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the device has a fine pointer (e.g., a mouse)
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.body.classList.add('custom-cursor-active');
+
+                const cursorContainer = document.getElementById('cursor-container');
+
+                document.addEventListener('mousemove', (e) => {
+                    if (cursorContainer) {
+                        cursorContainer.style.left = e.clientX + 'px';
+                        cursorContainer.style.top = e.clientY + 'px';
+                    }
+                });
+
+                document.addEventListener('mouseover', (e) => {
+                    if (e.target.matches('a, button, .choice-button, .nav-link, .close-modal, .menu-button') || 
+                        e.target.closest('a, button, .choice-button, .nav-link, .close-modal, .menu-button')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.add('active');
+                        }
+                    }
+                });
+
+                document.addEventListener('mouseout', (e) => {
+                    if (e.target.matches('a, button, .choice-button, .nav-link, .close-modal, .menu-button') || 
+                        e.target.closest('a, button, .choice-button, .nav-link, .close-modal, .menu-button')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <style>
+        /* Additional styles specific to the gameplay interface */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            border-bottom: 1px solid var(--color-bronze);
+        }
+        
+        .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--color-bronze-glow);
+        }
+        
+        .nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .nav-title {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-bronze-glow);
+        }
+        
+        /* Game wrapper styles */
+        .game-wrapper {
+            padding-top: 60px; /* Account for fixed nav bar */
+            height: 100vh;
+        }
+        
+        /* Story container styles */
+        #story-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        #story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        #story-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-text {
+            color: var(--color-bronze-glow);
+            font-weight: bold;
+        }
+        
+        .mandala-decoration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        /* Choice button styles */
+        .choice-button {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+            background-color: transparent;
+            border: 1px solid var(--color-bronze);
+            color: var(--color-text);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .choice-button:hover {
+            background-color: rgba(224, 150, 88, 0.1);
+            box-shadow: 0 0 25px 8px rgba(224, 150, 88, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .choice-icon {
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(169, 113, 66, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--color-bronze-glow);
+            transition: all 0.3s ease;
+        }
+        
+        .choice-button:hover .choice-icon {
+            background-color: rgba(224, 150, 88, 0.2);
+            transform: scale(1.1);
+        }
+        
+        /* Character summary styles */
+        .character-summary {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+        }
+        
+        .character-symbol {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+        
+        .character-name {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--color-bronze-glow);
+        }
+        
+        /* Element indicator styles */
+        .element-indicator {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: rgba(26, 26, 26, 0.5);
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .element-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-muted);
+        }
+        
+        .element-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .element-display .element-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .element-display.element-earth .element-icon {
+            color: var(--color-earth);
+        }
+        
+        .element-display.element-water .element-icon {
+            color: var(--color-water);
+        }
+        
+        .element-display.element-fire .element-icon {
+            color: var(--color-fire);
+        }
+        
+        .element-display.element-air .element-icon {
+            color: var(--color-air);
+        }
+        
+        .element-display.element-ether .element-icon {
+            color: var(--color-ether);
+        }
+        
+        /* Inventory styles */
+        #inventory-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        
+        #inventory-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+        }
+        
+        .inventory-empty {
+            color: var(--color-text-muted);
+            font-style: italic;
+            text-align: center;
+        }
+        
+        /* Menu modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--color-stone-dark);
+            border: 1px solid var(--color-bronze);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        .modal-header {
+            background-color: rgba(169, 113, 66, 0.2);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--color-bronze);
+        }
+        
+        .modal-header h2 {
+            color: var(--color-bronze-glow);
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: normal;
+            margin: 0;
+        }
+        
+        .close-modal {
+            color: var(--color-text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--color-bronze-glow);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .menu-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .menu-button {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: transparent;
+            border: 1px solid var(--color-bronze);
+            color: var(--color-text);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        
+        .menu-button:hover {
+            background-color: rgba(224, 150, 88, 0.1);
+            box-shadow: 0 0 25px 8px rgba(224, 150, 88, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .menu-button i {
+            min-width: 20px;
+            color: var(--color-bronze-glow);
+        }
+        
+        /* Notification styles */
+        #notification-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .notification {
+            background-color: rgba(26, 26, 26, 0.9);
+            border-left: 3px solid var(--color-bronze);
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: translateX(120%);
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            min-width: 250px;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .notification.hide {
+            transform: translateX(120%);
+            opacity: 0;
+        }
+        
+        .notification.success {
+            border-left-color: var(--color-deva);
+        }
+        
+        .notification.error {
+            border-left-color: var(--color-rakshasa);
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification-icon {
+            color: var(--color-bronze-glow);
+            font-size: 1.2rem;
+        }
+        
+        .notification.success .notification-icon {
+            color: var(--color-deva);
+        }
+        
+        .notification.error .notification-icon {
+            color: var(--color-rakshasa);
+        }
+        
+        /* Animation classes */
+        .text-fade-out {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-title {
+                font-size: 1.4rem;
+            }
+            
+            .game-wrapper {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr auto;
+            }
+            
+            aside {
+                border-left: none;
+                border-top: 1px solid var(--color-bronze);
+            }
+        }
+    </style>
 </body>
 </html>

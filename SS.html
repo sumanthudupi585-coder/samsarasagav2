@@ -6,12 +6,17 @@
     <title>Samsara Saga - A Journey Within</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Using the 'Allura' font for the title -->
+    <!-- Using the 'Allura' font for the title and 'Kurale' for body text -->
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-
+    <!-- Custom Cursor -->
     <div id="cursor-container">
         <svg class="chakra-cursor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e09658" stroke-width="1">
             <circle cx="12" cy="12" r="10"/>
@@ -33,13 +38,26 @@
         </svg>
     </div>
 
-    <main class="screen-container">
-        
-        <h1 class="game-title">Samsara Saga</h1>
+    <!-- Page Transition Effect -->
+    <div class="page-transition">
+        <div class="page-transition-content">
+            <div class="page-transition-mandala">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="30" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="15" stroke="#e09658" stroke-width="1" fill="none"/>
+                    <circle cx="50" cy="50" r="5" fill="#e09658"/>
+                </svg>
+            </div>
+        </div>
+    </div>
 
-        <a href="CharacterBuilding.html" class="mandala-link" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center;">
+    <main class="screen-container">
+        <h1 class="game-title text-fade-in">Samsara Saga</h1>
+        <p class="game-subtitle text-fade-in-delay-1">A Journey Through the Cycles of Existence</p>
+
+        <a href="CB.html" class="mandala-link text-fade-in-delay-2" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center;">
             <div class="mandala-container">
-                
                 <svg class="mandala-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                     <!-- Outermost static ring -->
                     <circle cx="100" cy="100" r="98" stroke-width="0.25"/>
@@ -83,10 +101,60 @@
                 </svg>
             </div>
 
-            <p class="cta-text">Enter the Game</p>
+            <p class="cta-text">Begin Your Journey</p>
         </a>
 
+        <div class="footer-links text-fade-in-delay-3">
+            <a href="#" class="footer-link" id="about-link">About</a>
+            <a href="#" class="footer-link" id="credits-link">Credits</a>
+        </div>
     </main>
+
+    <!-- About Modal -->
+    <div class="modal" id="about-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>About Samsara Saga</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Samsara Saga is a spiritual journey through the cycles of existence. In this text-based RPG adventure, you'll explore the concepts of karma, dharma, and the eternal cycle of rebirth.</p>
+                <p>Your choices will shape your character's path through the game, affecting your spiritual attributes and determining your ultimate destiny.</p>
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Character creation based on Vedic astrology (Nakshatras)</li>
+                    <li>Meaningful choices that affect your spiritual journey</li>
+                    <li>Puzzles that challenge your understanding of spiritual concepts</li>
+                    <li>Multiple endings based on your karma and spiritual development</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Modal -->
+    <div class="modal" id="credits-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Credits</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="credits-section">
+                    <h3>Development</h3>
+                    <p>Original Game Logic: Sumanth Udupi</p>
+                    <p>UI/UX Enhancement: NinjaTech AI</p>
+                </div>
+                <div class="credits-section">
+                    <h3>Spiritual Concepts</h3>
+                    <p>Based on Vedic astrology and Hindu philosophy</p>
+                </div>
+                <div class="credits-section">
+                    <h3>Special Thanks</h3>
+                    <p>To all the players who embark on this spiritual journey</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // This script handles the parallax motion effect based on the cursor's position.
@@ -99,8 +167,8 @@
             document.documentElement.style.setProperty('--mouse-x', `${x}px`);
             document.documentElement.style.setProperty('--mouse-y', `${y}px`);
         });
-    </script>
-    <script>
+
+        // Custom cursor functionality
         document.addEventListener('DOMContentLoaded', () => {
             // Check if the device has a fine pointer (e.g., a mouse)
             if (window.matchMedia('(pointer: fine)').matches) {
@@ -115,16 +183,16 @@
                     }
                 });
 
-                document.body.addEventListener('mouseover', (e) => {
-                    if (e.target.matches('a, button, .option, .mandala-link')) {
+                document.addEventListener('mouseover', (e) => {
+                    if (e.target.matches('a, button, .option, .mandala-link, .footer-link, .close-modal')) {
                         if (cursorContainer) {
                             cursorContainer.classList.add('active');
                         }
                     }
                 });
 
-                document.body.addEventListener('mouseout', (e) => {
-                    if (e.target.matches('a, button, .option, .mandala-link')) {
+                document.addEventListener('mouseout', (e) => {
+                    if (e.target.matches('a, button, .option, .mandala-link, .footer-link, .close-modal')) {
                         if (cursorContainer) {
                             cursorContainer.classList.remove('active');
                         }
@@ -132,7 +200,206 @@
                 });
             }
         });
+
+        // Page transition effect
+        function showPageTransition() {
+            const transition = document.querySelector('.page-transition');
+            transition.classList.add('active');
+            
+            setTimeout(() => {
+                // This timeout would normally be followed by a page change
+                // For now, we'll just hide it after a delay for demonstration
+                transition.classList.remove('active');
+            }, 2000);
+        }
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const aboutLink = document.getElementById('about-link');
+            const creditsLink = document.getElementById('credits-link');
+            const aboutModal = document.getElementById('about-modal');
+            const creditsModal = document.getElementById('credits-modal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+
+            // Show about modal
+            aboutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                aboutModal.style.display = 'flex';
+            });
+
+            // Show credits modal
+            creditsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                creditsModal.style.display = 'flex';
+            });
+
+            // Close modals
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    aboutModal.style.display = 'none';
+                    creditsModal.style.display = 'none';
+                });
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === aboutModal) {
+                    aboutModal.style.display = 'none';
+                }
+                if (e.target === creditsModal) {
+                    creditsModal.style.display = 'none';
+                }
+            });
+        });
+
+        // Add page transition when clicking on the mandala link
+        document.querySelector('.mandala-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            
+            // Show transition
+            const transition = document.querySelector('.page-transition');
+            transition.classList.add('active');
+            
+            // Navigate after animation
+            setTimeout(() => {
+                window.location.href = href;
+            }, 1000);
+        });
+
+        // Create ripple effect on click
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.classList.add('bg-ripple');
+            ripple.style.left = `${e.clientX}px`;
+            ripple.style.top = `${e.clientY}px`;
+            document.body.appendChild(ripple);
+            
+            // Remove ripple after animation completes
+            setTimeout(() => {
+                ripple.remove();
+            }, 2000);
+        });
     </script>
 
+    <style>
+        /* Additional styles specific to the home page */
+        .game-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .footer-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--color-bronze-glow);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--color-stone-dark);
+            border: 1px solid var(--color-bronze);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .modal-header {
+            background-color: rgba(169, 113, 66, 0.2);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--color-bronze);
+        }
+
+        .modal-header h2 {
+            color: var(--color-bronze-glow);
+            font-family: var(--font-title);
+            font-size: 2rem;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .close-modal {
+            color: var(--color-text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--color-bronze-glow);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-body h3 {
+            color: var(--color-bronze-glow);
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .modal-body ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .credits-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .credits-section h3 {
+            color: var(--color-bronze-glow);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .credits-section p {
+            margin: 0.25rem 0;
+        }
+    </style>
 </body>
 </html>

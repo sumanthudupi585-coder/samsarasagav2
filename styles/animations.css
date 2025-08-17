@@ -1,0 +1,289 @@
+/* ==============================================
+  Samsara Saga - Animations and Visual Effects
+  ==============================================
+  * Description: Animation and visual effects for the game
+  * Version: 1.0.0
+  ==============================================
+*/
+
+/* --- SECTION 1: PAGE TRANSITIONS --- */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-stone-dark);
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.page-transition.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.page-transition-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.page-transition-mandala {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- SECTION 2: ELEMENT ANIMATIONS --- */
+.element-earth-anim {
+  animation: earthPulse 3s ease-in-out infinite;
+}
+
+.element-water-anim {
+  animation: waterFlow 3s ease-in-out infinite;
+}
+
+.element-fire-anim {
+  animation: fireFlicker 2s ease-in-out infinite;
+}
+
+.element-air-anim {
+  animation: airFloat 4s ease-in-out infinite;
+}
+
+.element-ether-anim {
+  animation: etherGlow 4s ease-in-out infinite;
+}
+
+@keyframes earthPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes waterFlow {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes fireFlicker {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  25% { transform: scale(1.03); filter: brightness(1.1); }
+  50% { transform: scale(0.97); filter: brightness(0.9); }
+  75% { transform: scale(1.05); filter: brightness(1.2); }
+}
+
+@keyframes airFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(2deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(3px) rotate(-2deg); }
+}
+
+@keyframes etherGlow {
+  0%, 100% { filter: drop-shadow(0 0 3px var(--color-ether)); }
+  50% { filter: drop-shadow(0 0 8px var(--color-ether)); }
+}
+
+/* --- SECTION 3: TEXT ANIMATIONS --- */
+.text-fade-in {
+  opacity: 0;
+  animation: textFadeIn 1s forwards;
+}
+
+.text-fade-in-delay-1 {
+  opacity: 0;
+  animation: textFadeIn 1s forwards 0.3s;
+}
+
+.text-fade-in-delay-2 {
+  opacity: 0;
+  animation: textFadeIn 1s forwards 0.6s;
+}
+
+.text-fade-in-delay-3 {
+  opacity: 0;
+  animation: textFadeIn 1s forwards 0.9s;
+}
+
+@keyframes textFadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.text-glow {
+  animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 5px var(--color-bronze-glow); }
+  100% { text-shadow: 0 0 15px var(--color-bronze-glow), 0 0 20px var(--color-bronze); }
+}
+
+/* --- SECTION 4: CHOICE SELECTION ANIMATIONS --- */
+.choice-selected {
+  animation: choiceSelected 0.5s forwards;
+}
+
+@keyframes choiceSelected {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); box-shadow: 0 0 20px var(--color-bronze-glow); }
+  100% { transform: scale(1); }
+}
+
+.choice-correct {
+  animation: choiceCorrect 0.5s forwards;
+}
+
+@keyframes choiceCorrect {
+  0% { background-color: transparent; }
+  100% { background-color: rgba(102, 187, 106, 0.2); border-color: var(--color-deva); }
+}
+
+.choice-incorrect {
+  animation: choiceIncorrect 0.5s forwards;
+}
+
+@keyframes choiceIncorrect {
+  0% { background-color: transparent; }
+  100% { background-color: rgba(229, 115, 115, 0.2); border-color: var(--color-rakshasa); }
+}
+
+/* --- SECTION 5: KARMA CHANGE ANIMATIONS --- */
+.karma-increase {
+  position: relative;
+}
+
+.karma-increase::after {
+  content: '+';
+  position: absolute;
+  top: -20px;
+  right: 0;
+  color: var(--color-deva);
+  font-weight: bold;
+  animation: karmaFloat 1.5s forwards;
+  opacity: 0;
+}
+
+.karma-decrease {
+  position: relative;
+}
+
+.karma-decrease::after {
+  content: '-';
+  position: absolute;
+  top: -20px;
+  right: 0;
+  color: var(--color-rakshasa);
+  font-weight: bold;
+  animation: karmaFloat 1.5s forwards;
+  opacity: 0;
+}
+
+@keyframes karmaFloat {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* --- SECTION 6: MANDALA ANIMATIONS --- */
+.mandala-breathe {
+  animation: mandalaBreath 8s ease-in-out infinite;
+}
+
+@keyframes mandalaBreath {
+  0%, 100% { transform: scale(0.98); filter: drop-shadow(0 0 4px var(--color-bronze-glow)); opacity: 0.8; }
+  50% { transform: scale(1); filter: drop-shadow(0 0 12px var(--color-bronze-glow)); opacity: 1; }
+}
+
+.mandala-spin-slow {
+  animation: mandalaSpin 120s linear infinite;
+}
+
+.mandala-spin-medium {
+  animation: mandalaSpin 60s linear infinite;
+}
+
+.mandala-spin-fast {
+  animation: mandalaSpin 30s linear infinite;
+}
+
+@keyframes mandalaSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mandala-spin-reverse {
+  animation: mandalaSpinReverse 60s linear infinite;
+}
+
+@keyframes mandalaSpinReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* --- SECTION 7: BACKGROUND EFFECTS --- */
+.bg-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-bronze-glow) 0%, transparent 70%);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: bgRipple 2s ease-out forwards;
+}
+
+@keyframes bgRipple {
+  0% { width: 0; height: 0; opacity: 0.5; }
+  100% { width: 500px; height: 500px; opacity: 0; }
+}
+
+/* --- SECTION 8: NOTIFICATION ANIMATIONS --- */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(26, 26, 26, 0.9);
+  border-left: 3px solid var(--color-bronze);
+  padding: 15px 20px;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 1000;
+}
+
+.notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification.hide {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+/* --- SECTION 9: RESPONSIVE ANIMATIONS --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

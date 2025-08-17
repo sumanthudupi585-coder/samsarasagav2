@@ -1,0 +1,827 @@
+/* ==============================================
+  Samsara Saga - Main Stylesheet
+  ==============================================
+  * Description: Unified styling for the Samsara Saga game
+  * Version: 1.0.0
+  ==============================================
+*/
+
+/* --- SECTION 1: VARIABLES & THEME --- */
+:root {
+  /* Core Colors - Spiritual Theme */
+  --color-bg-dark: #121212;
+  --color-bg-light: #1e1e1e;
+  --color-stone-dark: #1a1a1a;
+  --color-stone-light: #2a2a2a;
+  
+  /* Accent Colors */
+  --color-bronze: #a97142;
+  --color-bronze-glow: #e09658;
+  --color-gold: #d4af37;
+  --color-silver: #c0c0c0;
+  
+  /* Text Colors */
+  --color-text: #e0e0e0;
+  --color-text-muted: #8a8a8a;
+  
+  /* Guna Colors */
+  --color-sattva: #64b5f6; /* Blue - Harmony, clarity */
+  --color-rajas: #ff7043;  /* Orange-Red - Activity, passion */
+  --color-tamas: #7e57c2;  /* Purple - Inertia, stability */
+  
+  /* Gana Colors */
+  --color-deva: #66bb6a;    /* Green - Divine */
+  --color-manushya: #ffb74d; /* Amber - Human */
+  --color-rakshasa: #e57373; /* Red - Demon */
+  
+  /* Element Colors */
+  --color-earth: #8d6e63;
+  --color-water: #4fc3f7;
+  --color-fire: #ff5722;
+  --color-air: #b2dfdb;
+  --color-ether: #b39ddb;
+  
+  /* Fonts */
+  --font-title: 'Allura', cursive;
+  --font-body: 'Kurale', serif;
+  
+  /* Animations */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Cursor */
+  --cursor-size: 32px;
+  --cursor-z-index: 9999;
+  --cursor-follow-duration: 0.1s;
+  --cursor-follow-easing: ease-out;
+  --cursor-active-transition-duration: 0.3s;
+  --cursor-active-easing: ease-in-out;
+  --cursor-active-animation-duration: 4s;
+  --cursor-glow-color: var(--color-bronze-glow);
+  --cursor-glow-size: 15px;
+  --cursor-glow-opacity: 0.9;
+}
+
+/* --- SECTION 2: BASE STYLING --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden; /* Prevents the main page from scrolling */
+  font-family: var(--font-body);
+}
+
+body {
+  position: relative; /* Required for pseudo-elements to be positioned correctly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-text);
+  background-color: var(--color-stone-dark);
+  background-image: 
+    radial-gradient(ellipse at center, var(--color-stone-light) 0%, var(--color-stone-dark) 75%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* --- SECTION 3: MYSTICAL SMOKE EFFECT --- */
+body::before, body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-out;
+  will-change: transform, opacity;
+  z-index: 1; /* Place smoke behind content */
+  pointer-events: none;
+}
+
+/* Foreground smoke layer: more defined, faster animation */
+body::before {
+  background: radial-gradient(circle at 50% 50%, rgba(50, 50, 50, 0.6), transparent 60%);
+  opacity: 0.5;
+  animation: smokeDrift1 25s ease-in-out infinite;
+}
+
+/* Background smoke layer: larger, softer, slower animation */
+body::after {
+  background: radial-gradient(circle at 20% 80%, rgba(40, 40, 40, 0.5), transparent 70%);
+  opacity: 0.4;
+  animation: smokeDrift2 40s ease-in-out infinite;
+}
+
+@keyframes smokeDrift1 {
+  0% { transform: scale(1.1); opacity: 0.5; }
+  50% { transform: translate(-60px, 30px) scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 0.5; }
+}
+
+@keyframes smokeDrift2 {
+  0% { transform: scale(1.5); opacity: 0.4; }
+  50% { transform: translate(40px, -20px) scale(1.2); opacity: 0.3; }
+  100% { transform: scale(1.5); opacity: 0.4; }
+}
+
+/* --- SECTION 4: CUSTOM CURSOR --- */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none;
+  }
+
+  #cursor-container {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    z-index: var(--cursor-z-index);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Crucial for allowing clicks on elements underneath */
+    transition: transform var(--cursor-follow-duration) var(--cursor-follow-easing);
+    will-change: transform;
+  }
+
+  .chakra-cursor {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Needed for positioning the pseudo-element */
+    transition: transform var(--cursor-active-transition-duration) var(--cursor-active-easing);
+    will-change: transform;
+  }
+
+  .chakra-cursor::after {
+    content: '';
+    position: absolute;
+    top: -25%; /* Position the glow correctly around the cursor */
+    left: -25%;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%; /* Assuming the cursor is circular */
+    box-shadow: 0 0 var(--cursor-glow-size) var(--cursor-glow-color), 
+                0 0 calc(var(--cursor-glow-size) * 2) var(--cursor-glow-color);
+    opacity: 0; /* Start with the glow invisible */
+    transition: opacity var(--cursor-active-transition-duration) var(--cursor-active-easing);
+    will-change: opacity;
+  }
+
+  #cursor-container.active .chakra-cursor {
+    animation: rotateChakra var(--cursor-active-animation-duration) linear infinite;
+  }
+
+  #cursor-container.active .chakra-cursor::after {
+    opacity: var(--cursor-glow-opacity);
+  }
+
+  @keyframes rotateChakra {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #cursor-container,
+    .chakra-cursor,
+    .chakra-cursor::after {
+      transition: none;
+    }
+
+    #cursor-container.active .chakra-cursor {
+      animation: none;
+    }
+
+    #cursor-container.active .chakra-cursor::after {
+      opacity: var(--cursor-glow-opacity);
+    }
+  }
+}
+
+/* --- SECTION 5: MAIN CONTENT CONTAINER --- */
+.screen-container {
+  position: relative;
+  z-index: 10; /* Place content above smoke */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem; /* Added more vertical padding */
+  animation: fadeIn 4s ease-out;
+  overflow-y: auto; /* Allow scrolling on this container if content is too tall */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- SECTION 6: GAME TITLE STYLING --- */
+.game-title {
+  font-family: var(--font-title);
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  text-shadow: 0 0 15px rgba(0,0,0,0.7);
+  margin-bottom: 1rem;
+  text-align: center; /* Ensure title is centered */
+  transform: translate(calc(var(--mouse-x, 0) * 0.05), calc(var(--mouse-y, 0) * 0.05));
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* --- SECTION 7: MANDALA CONTAINER & SVG STYLING --- */
+.mandala-container {
+  position: relative;
+  width: clamp(280px, 90vw, 550px); /* Adjusted min-width */
+  height: clamp(280px, 90vw, 550px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent the mandala from shrinking */
+  transform: translate(calc(var(--mouse-x, 0) * 0.03), calc(var(--mouse-y, 0) * 0.03));
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+  border-radius: 50%; /* Added for the background glow effect */
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.mandala-svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--color-bronze);
+  fill: none;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: breath 8s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+@keyframes breath {
+  0% { transform: scale(0.98); filter: drop-shadow(0 0 4px var(--color-bronze-glow)); opacity: 0.8; }
+  50% { transform: scale(1); filter: drop-shadow(0 0 12px var(--color-bronze-glow)); opacity: 1; }
+  100% { transform: scale(0.98); filter: drop-shadow(0 0 4px var(--color-bronze-glow)); opacity: 0.8; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-medium-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes rotate-fast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mandala-rotate-1 {
+  transform-origin: center;
+  animation: rotate-slow 120s linear infinite;
+}
+.mandala-rotate-2 {
+  transform-origin: center;
+  animation: rotate-medium-reverse 80s linear infinite;
+}
+.mandala-rotate-3 {
+  transform-origin: center;
+  animation: rotate-fast 40s linear infinite;
+}
+
+/* --- SECTION 8: INTERACTIVE LINK STYLING --- */
+.mandala-link:hover .mandala-container {
+  background-color: rgba(224, 150, 88, 0.1);
+  box-shadow: 0 0 30px 10px rgba(224, 150, 88, 0.2);
+}
+
+.cta-text {
+  margin-top: 1.5rem; /* Reduced margin */
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center; /* Ensure text is centered */
+  opacity: 0.7;
+  transition: opacity 0.4s ease, transform 0.3s ease-out;
+  transform: translate(calc(var(--mouse-x, 0) * 0.05), calc(var(--mouse-y, 0) * 0.05));
+  will-change: transform;
+}
+
+.mandala-link:hover .cta-text {
+  opacity: 1;
+}
+
+/* --- SECTION 9: CHARACTER BUILDER STYLING --- */
+.oracle-container {
+  width: 95%;
+  max-width: 800px;
+  height: 90vh;
+  max-height: 700px;
+  text-align: center;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Removed scrolling within container */
+}
+
+/* QUESTION & RESULT SCREEN STYLING */
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out, visibility 0.8s;
+  will-change: opacity, transform;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.screen.exiting {
+  opacity: 0;
+  transform: translateY(-30px) scale(0.98);
+}
+
+.screen-title {
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 400;
+  color: var(--color-text);
+  text-shadow: 0 0 15px rgba(0,0,0,0.7);
+  margin-bottom: 2rem;
+}
+
+.screen-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--color-text-muted);
+  margin-bottom: 3rem;
+  font-style: italic;
+  max-width: 600px;
+}
+
+/* OPTIONS STYLING */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 650px;
+}
+
+.option {
+  background-color: transparent;
+  border: 1px solid var(--color-bronze);
+  color: var(--color-text);
+  padding: 1.2rem 1.5rem;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+  text-align: center;
+  border-radius: 4px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.05em;
+}
+
+.option:hover {
+  background-color: rgba(224, 150, 88, 0.1);
+  box-shadow: 0 0 25px 8px rgba(224, 150, 88, 0.15);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* RESULT SCREEN SPECIFIC STYLING */
+#result-screen .result-content {
+  border: 1px solid var(--color-bronze);
+  border-radius: 10px;
+  padding: 2.5rem;
+  background-color: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 30px rgba(169, 113, 66, 0.2);
+  animation: fadeInResult 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInResult {
+  to { opacity: 1; }
+}
+
+.result-nakshatra-name {
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 400;
+  color: var(--color-bronze-glow);
+  text-shadow: 0 0 20px var(--color-bronze);
+  margin-bottom: 0.5rem;
+}
+
+.result-symbol-deity {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.result-profile {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.profile-item {
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+}
+.profile-item:last-child {
+  border-bottom: none;
+}
+
+.profile-title {
+  color: var(--color-bronze-glow);
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* ACTION BUTTON */
+#action-button, .action-button {
+  margin-top: 2rem;
+  background: transparent;
+  border: 1px solid var(--color-bronze);
+  color: var(--color-bronze-glow);
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  letter-spacing: 0.1em;
+}
+
+#action-button:hover, .action-button:hover {
+  background-color: var(--color-bronze);
+  color: var(--color-stone-dark);
+}
+
+.action-button.primary {
+  background-color: var(--color-bronze);
+  color: var(--color-stone-dark);
+}
+
+.action-button.primary:hover {
+  background-color: var(--color-bronze-glow);
+}
+
+/* --- SECTION 10: CHARACTER PROFILE STYLING --- */
+.profile-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 800px;
+  background-color: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-bronze);
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: 0 0 30px rgba(169, 113, 66, 0.2);
+  animation: fadeIn 1s ease-out;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+}
+
+.profile-name {
+  font-family: var(--font-title);
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 400;
+  color: var(--color-bronze-glow);
+  text-shadow: 0 0 20px var(--color-bronze);
+  margin-bottom: 0.5rem;
+}
+
+.profile-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.detail-item {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+}
+
+.detail-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-title {
+  color: var(--color-bronze-glow);
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.gunas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.guna-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.guna-name {
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.guna-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Guna-specific styling */
+.guna-item:nth-child(1) {
+  background-color: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+}
+.guna-item:nth-child(1) .guna-name {
+  color: var(--color-sattva);
+}
+.guna-item:nth-child(1) .guna-value {
+  color: var(--color-sattva);
+}
+
+.guna-item:nth-child(2) {
+  background-color: rgba(255, 112, 67, 0.1);
+  border: 1px solid rgba(255, 112, 67, 0.3);
+}
+.guna-item:nth-child(2) .guna-name {
+  color: var(--color-rajas);
+}
+.guna-item:nth-child(2) .guna-value {
+  color: var(--color-rajas);
+}
+
+.guna-item:nth-child(3) {
+  background-color: rgba(126, 87, 194, 0.1);
+  border: 1px solid rgba(126, 87, 194, 0.3);
+}
+.guna-item:nth-child(3) .guna-name {
+  color: var(--color-tamas);
+}
+.guna-item:nth-child(3) .guna-value {
+  color: var(--color-tamas);
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+/* --- SECTION 11: GAMEPLAY INTERFACE --- */
+.game-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+}
+
+main {
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(26, 26, 26, 0.7);
+}
+
+#story-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+#choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+aside {
+  background-color: rgba(30, 30, 30, 0.8);
+  padding: 1.5rem;
+  border-left: 1px solid var(--color-bronze);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.status-panel-title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--color-bronze-glow);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stat-item {
+  background-color: rgba(26, 26, 26, 0.7);
+  padding: 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(169, 113, 66, 0.3);
+}
+
+#inventory-list {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+#inventory-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+}
+
+.game-controls {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.control-button {
+  background: transparent;
+  border: 1px solid var(--color-bronze);
+  color: var(--color-bronze-glow);
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  letter-spacing: 0.1em;
+  width: 100%;
+}
+
+.control-button:hover {
+  background-color: var(--color-bronze);
+  color: var(--color-stone-dark);
+}
+
+/* --- SECTION 12: RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .mandala-container {
+    width: clamp(280px, 85vw, 450px); /* Slightly smaller max width on mobile */
+    height: clamp(280px, 85vw, 450px);
+  }
+
+  .cta-text {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    margin-top: 1.5rem;
+  }
+
+  /* Disable mouse-move parallax on touch devices for better performance */
+  body, .game-title, .mandala-container, .cta-text, body::before, body::after {
+    transition: none;
+  }
+  
+  .game-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  
+  aside {
+    border-left: none;
+    border-top: 1px solid var(--color-bronze);
+  }
+  
+  .profile-card {
+    padding: 1.5rem;
+  }
+  
+  .gunas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+}
+
+/* --- SECTION 13: ANIMATIONS --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px var(--color-bronze-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-bronze-glow), 0 0 30px var(--color-bronze);
+  }
+  100% {
+    box-shadow: 0 0 5px var(--color-bronze-glow);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.glow {
+  animation: glow 2s infinite;
+}

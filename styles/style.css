@@ -1,0 +1,608 @@
+/* ==============================================
+  Final Custom Cursor - V3
+  ==============================================
+  * Author: Gemini UI/UX Expert
+  * Description: A production-ready custom cursor that fully implements
+  * architectural, performance, and accessibility best practices as
+  * outlined in the research report.
+  ==============================================
+*/
+
+/* --- SECTION 1: ARCHITECTURE & THEMING --- */
+/*
+  All configurable values are defined as CSS Custom Properties for easy
+  theming, maintenance, and scalability. This creates a centralized
+  "styling API" for the component.
+*/
+:root {
+  --cursor-size: 32px;
+  --cursor-z-index: 9999;
+  --cursor-follow-duration: 0.1s;
+  --cursor-follow-easing: ease-out;
+  --cursor-active-transition-duration: 0.3s;
+  --cursor-active-easing: ease-in-out;
+  --cursor-active-animation-duration: 4s;
+  --cursor-glow-color: #e09658;
+  --cursor-glow-size: 15px;
+  --cursor-glow-opacity: 0.9;
+  --color-stone-dark: #1a1a1a;
+  --color-stone-light: #2a2a2a;
+  --color-bronze: #a97142;
+  --color-bronze-glow: #e09658;
+  --color-text: #c5c5c5;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  --color-bg-dark: #1a1a1a;
+  --color-bg-light: #2a2a2a;
+  --color-accent: #a97142;
+  --color-accent-glow: #e09658;
+  --color-text-muted: #8a8a8a;
+  --font-title: 'Allura', cursive;
+  --font-body: 'Kurale', serif;
+}
+
+/* SECTION 3: ACCESSIBILITY & PROGRESSIVE ENHANCEMENT (PART 1)
+  The entire custom cursor experience is wrapped in a 'pointer: fine' media query.
+  This ensures it ONLY applies to devices with a precise pointing mechanism
+  like a mouse, and does not interfere with touch-based devices.
+*/
+@media (pointer: fine) {
+  /* This class should be added to the <body> via JavaScript.
+    The universal selector (*) is now used to ensure the default system 
+    cursor is hidden on ALL elements for a consistent experience. This is the fix.
+  */
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none;
+  }
+
+  /* --- CURSOR CONTAINER STYLING --- */
+  #cursor-container {
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    z-index: var(--cursor-z-index);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Crucial for allowing clicks on elements underneath */
+    transition: transform var(--cursor-follow-duration) var(--cursor-follow-easing);
+    
+    /* PERFORMANCE: Hint to the browser about upcoming transform changes. */
+    will-change: transform;
+  }
+
+  /* --- CURSOR SVG STYLING --- */
+  .chakra-cursor {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Needed for positioning the pseudo-element */
+    transition: transform var(--cursor-active-transition-duration) var(--cursor-active-easing);
+    will-change: transform;
+  }
+
+  /* --- SECTION 2: PERFORMANT GLOW EFFECT --- */
+  /*
+    A pseudo-element creates the glow. We animate its 'opacity'
+    instead of 'filter' or 'box-shadow' to leverage GPU acceleration and
+    avoid expensive repaints, ensuring a smooth 60fps animation.
+  */
+  .chakra-cursor::after {
+    content: '';
+    position: absolute;
+    top: -25%; /* Position the glow correctly around the cursor */
+    left: -25%;
+    width: 150%;
+    height: 150%;
+    border-radius: 50%; /* Assuming the cursor is circular */
+    
+    /* The static shadow that will be faded in/out */
+    box-shadow: 0 0 var(--cursor-glow-size) var(--cursor-glow-color), 
+                0 0 calc(var(--cursor-glow-size) * 2) var(--cursor-glow-color);
+
+    opacity: 0; /* Start with the glow invisible */
+    transition: opacity var(--cursor-active-transition-duration) var(--cursor-active-easing);
+    
+    /* PERFORMANCE: Hint for upcoming opacity changes. */
+    will-change: opacity;
+  }
+
+  /* --- ACTIVE STATE --- */
+  /* This class is added via JavaScript on hover */
+  #cursor-container.active .chakra-cursor {
+    animation: rotateChakra var(--cursor-active-animation-duration) linear infinite;
+  }
+
+  /* Fade in the performant glow on the pseudo-element */
+  #cursor-container.active .chakra-cursor::after {
+    opacity: var(--cursor-glow-opacity);
+  }
+
+  /* --- ROTATION KEYFRAME ANIMATION --- */
+  @keyframes rotateChakra {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* SECTION 3: ACCESSIBILITY & PROGRESSIVE ENHANCEMENT (PART 2)
+    Respect user's preference for reduced motion. If the user has enabled
+    this setting, all animations and transitions are disabled to prevent
+    potential discomfort or harm.
+  */
+  @media (prefers-reduced-motion: reduce) {
+    #cursor-container,
+    .chakra-cursor,
+    .chakra-cursor::after {
+      /* Disable all transitions */
+      transition: none;
+    }
+
+    #cursor-container.active .chakra-cursor {
+      /* Disable the rotation animation */
+      animation: none;
+    }
+
+    /* The static glow is still shown in the active state to provide feedback, but without motion. */
+    #cursor-container.active .chakra-cursor::after {
+      opacity: var(--cursor-glow-opacity);
+    }
+  }
+}
+        
+
+        /* * BASE STYLING
+         * Resets defaults and sets up the core atmosphere and custom cursor.
+         */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden; /* Prevents the main page from scrolling */
+            font-family: 'Kurale', serif;
+        }
+
+        body {
+            position: relative; /* Required for pseudo-elements to be positioned correctly */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-text);
+            background-color: var(--color-stone-dark);
+            background-image: 
+                radial-gradient(ellipse at center, var(--color-stone-light) 0%, var(--color-stone-dark) 75%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* * IMPROVED MYSTICAL SMOKE EFFECT
+         * Using two pseudo-elements for a layered, more prominent smoke effect.
+         */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease-out;
+            will-change: transform, opacity;
+            z-index: 1; /* Place smoke behind content */
+        }
+
+        /* Foreground smoke layer: more defined, faster animation */
+        body::before {
+            background: radial-gradient(circle at 50% 50%, rgba(50, 50, 50, 0.6), transparent 60%);
+            opacity: 0.5;
+            animation: smokeDrift1 25s ease-in-out infinite;
+            transform: translate(calc(var(--mouse-x) * -0.02), calc(var(--mouse-y) * -0.02));
+        }
+
+        /* Background smoke layer: larger, softer, slower animation */
+        body::after {
+            background: radial-gradient(circle at 20% 80%, rgba(40, 40, 40, 0.5), transparent 70%);
+            opacity: 0.4;
+            animation: smokeDrift2 40s ease-in-out infinite;
+            transform: translate(calc(var(--mouse-x) * -0.01), calc(var(--mouse-y) * -0.01));
+        }
+
+        @keyframes smokeDrift1 {
+            0% { transform: translate(calc(var(--mouse-x) * -0.02), calc(var(--mouse-y) * -0.02)) scale(1.1); opacity: 0.5; }
+            50% { transform: translate(calc(var(--mouse-x) * -0.02 - 60px), calc(var(--mouse-y) * -0.02 + 30px)) scale(1.3); opacity: 0.6; }
+            100% { transform: translate(calc(var(--mouse-x) * -0.02), calc(var(--mouse-y) * -0.02)) scale(1.1); opacity: 0.5; }
+        }
+
+        @keyframes smokeDrift2 {
+            0% { transform: translate(calc(var(--mouse-x) * -0.01), calc(var(--mouse-y) * -0.01)) scale(1.5); opacity: 0.4; }
+            50% { transform: translate(calc(var(--mouse-x) * -0.01 + 40px), calc(var(--mouse-y) * -0.01 - 20px)) scale(1.2); opacity: 0.3; }
+            100% { transform: translate(calc(var(--mouse-x) * -0.01), calc(var(--mouse-y) * -0.01)) scale(1.5); opacity: 0.4; }
+        }
+
+        /* * MAIN CONTENT CONTAINER
+         * Centers the content and allows for scrolling if content overflows the viewport.
+         */
+        .screen-container {
+            position: relative;
+            z-index: 10; /* Place content above smoke */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem; /* Added more vertical padding */
+            animation: fadeIn 4s ease-out;
+            overflow-y: auto; /* Allow scrolling on this container if content is too tall */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* * GAME TITLE STYLING
+         * Using the 'Allura' font for an elegant, script-like feel.
+         */
+        .game-title {
+            font-family: 'Allura', cursive;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--color-text);
+            text-shadow: 0 0 15px rgba(0,0,0,0.7);
+            margin-bottom: 1rem;
+            text-align: center; /* Ensure title is centered */
+            transform: translate(calc(var(--mouse-x) * 0.05), calc(var(--mouse-y) * 0.05));
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+        }
+
+        /* * MANDALA CONTAINER & SVG STYLING
+         * The central artistic element, also part of the parallax effect.
+         */
+        .mandala-container {
+            position: relative;
+            width: clamp(280px, 90vw, 550px); /* Adjusted min-width */
+            height: clamp(280px, 90vw, 550px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0; /* Prevent the mandala from shrinking */
+            transform: translate(calc(var(--mouse-x) * 0.03), calc(var(--mouse-y) * 0.03));
+            transition: transform 0.3s ease-out;
+            will-change: transform;
+            border-radius: 50%; /* Added for the background glow effect */
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .mandala-svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--color-bronze);
+            fill: none;
+            stroke-width: 0.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: breath 8s ease-in-out infinite;
+            will-change: transform, filter;
+        }
+
+        /* * MANDALA ANIMATIONS
+         * A "breathing glow" effect and multiple counter-rotating layers.
+         */
+        @keyframes breath {
+            0% { transform: scale(0.98); filter: drop-shadow(0 0 4px var(--color-bronze-glow)); opacity: 0.8; }
+            50% { transform: scale(1); filter: drop-shadow(0 0 12px var(--color-bronze-glow)); opacity: 1; }
+            100% { transform: scale(0.98); filter: drop-shadow(0 0 4px var(--color-bronze-glow)); opacity: 0.8; }
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes rotate-medium-reverse {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        
+        @keyframes rotate-fast {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .mandala-rotate-1 {
+            transform-origin: center;
+            animation: rotate-slow 120s linear infinite;
+        }
+        .mandala-rotate-2 {
+            transform-origin: center;
+            animation: rotate-medium-reverse 80s linear infinite;
+        }
+        .mandala-rotate-3 {
+            transform-origin: center;
+            animation: rotate-fast 40s linear infinite;
+        }
+
+        /* * INTERACTIVE LINK STYLING
+         * Defines the hover state for the clickable area.
+         */
+        .mandala-link:hover .mandala-container {
+            background-color: rgba(224, 150, 88, 0.1);
+            box-shadow: 0 0 30px 10px rgba(224, 150, 88, 0.2);
+        }
+
+        .mandala-link:hover {
+            /* NEW: Add an "active" glowing cursor on hover */
+        }
+
+        /* * CALL TO ACTION TEXT */
+        .cta-text {
+            margin-top: 1.5rem; /* Reduced margin */
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-align: center; /* Ensure text is centered */
+            opacity: 0.7;
+            transition: opacity 0.4s ease, transform 0.3s ease-out;
+            transform: translate(calc(var(--mouse-x) * 0.05), calc(var(--mouse-y) * 0.05));
+            will-change: transform;
+        }
+
+        .mandala-link:hover .cta-text {
+            opacity: 1;
+        }
+
+        /* * RESPONSIVE DESIGN
+         * Adjustments for smaller screens like mobile phones.
+         */
+        @media (max-width: 768px) {
+            .game-title {
+                font-size: clamp(3.5rem, 18vw, 6rem);
+                margin-bottom: 0.5rem;
+            }
+
+            .mandala-container {
+                width: clamp(280px, 85vw, 450px); /* Slightly smaller max width on mobile */
+                height: clamp(280px, 85vw, 450px);
+            }
+
+            .cta-text {
+                font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+                margin-top: 1.5rem;
+            }
+
+            /* Disable mouse-move parallax on touch devices for better performance */
+            body, .game-title, .mandala-container, .cta-text, body::before, body::after {
+                transition: none;
+            }
+        }
+
+
+        /* BASE STYLING */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: var(--font-body);
+            background-color: var(--color-bg-dark);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-text);
+            background-image:
+                radial-gradient(ellipse at center, var(--color-bg-light) 0%, var(--color-bg-dark) 75%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            perspective: 1000px;
+            overflow: hidden; /* Hide main scrollbars */
+        }
+        
+        /* MYSTICAL SMOKE EFFECT */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            will-change: transform, opacity;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        body::before {
+            background: radial-gradient(circle at 50% 50%, rgba(50, 50, 50, 0.4), transparent 60%);
+            opacity: 0.5;
+            animation: smokeDrift1 25s ease-in-out infinite;
+        }
+
+        body::after {
+            background: radial-gradient(circle at 20% 80%, rgba(40, 40, 40, 0.3), transparent 70%);
+            opacity: 0.4;
+            animation: smokeDrift2 40s ease-in-out infinite;
+        }
+
+        @keyframes smokeDrift1 {
+            50% { transform: translate(-60px, 30px) scale(1.3); opacity: 0.6; }
+        }
+
+        @keyframes smokeDrift2 {
+            50% { transform: translate(40px, -20px) scale(1.2); opacity: 0.3; }
+        }
+
+        /* MAIN QUIZ CONTAINER */
+        .oracle-container {
+            width: 95%;
+            max-width: 800px;
+            height: 90vh;
+            max-height: 700px;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Removed scrolling within container */
+        }
+
+        /* QUESTION & RESULT SCREEN STYLING */
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, visibility 0.8s;
+            will-change: opacity, transform;
+        }
+
+        .screen.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        
+        .screen.exiting {
+            opacity: 0;
+            transform: translateY(-30px) scale(0.98);
+        }
+
+        .screen-title {
+            font-family: var(--font-title);
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 400;
+            color: var(--color-text);
+            text-shadow: 0 0 15px rgba(0,0,0,0.7);
+            margin-bottom: 2rem;
+        }
+        
+        .screen-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--color-text-muted);
+            margin-bottom: 3rem;
+            font-style: italic;
+            max-width: 600px;
+        }
+
+        /* OPTIONS STYLING */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .option {
+            background-color: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-text);
+            padding: 1.2rem 1.5rem;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+            text-align: center;
+            border-radius: 4px;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            letter-spacing: 0.05em;
+        }
+
+        .option:hover {
+            background-color: rgba(224, 150, 88, 0.1);
+            box-shadow: 0 0 25px 8px rgba(224, 150, 88, 0.15);
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* RESULT SCREEN SPECIFIC STYLING */
+        #result-screen .result-content {
+            border: 1px solid var(--color-accent);
+            border-radius: 10px;
+            padding: 2.5rem;
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(169, 113, 66, 0.2);
+            animation: fadeInResult 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInResult {
+            to { opacity: 1; }
+        }
+
+        .result-nakshatra-name {
+            font-family: var(--font-title);
+            font-size: clamp(3rem, 10vw, 5rem);
+            font-weight: 400;
+            color: var(--color-accent-glow);
+            text-shadow: 0 0 20px var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-symbol-deity {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .result-profile {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .profile-item {
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+        }
+        .profile-item:last-child {
+            border-bottom: none;
+        }
+
+        .profile-title {
+            color: var(--color-accent-glow);
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* ACTION BUTTON */
+        #action-button {
+            margin-top: 2rem;
+            background: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent-glow);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+            letter-spacing: 0.1em;
+        }
+
+        #action-button:hover {
+            background-color: var(--color-accent);
+            color: var(--color-bg-dark);
+        }
