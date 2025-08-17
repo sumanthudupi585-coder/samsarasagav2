@@ -1,0 +1,149 @@
+/* ==============================================
+  Samsara Saga - Layout Standardization
+  ==============================================
+  * Description: Standardized layout and spacing for consistent UI
+  * Version: 1.0.0
+  ==============================================
+*/
+
+/* --- SECTION 1: CONTAINER STANDARDIZATION --- */
+.container, .screen-container, .oracle-container, .profile-container, .game-wrapper {
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Adjust for fixed navigation */
+.with-nav {
+  padding-top: 80px; /* Account for fixed nav bar */
+}
+
+/* --- SECTION 2: CARD STANDARDIZATION --- */
+.card, .profile-card, .result-content, .modal-content {
+  background-color: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-bronze);
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: 0 0 30px rgba(169, 113, 66, 0.2);
+}
+
+/* --- SECTION 3: SECTION SPACING --- */
+.section, .detail-item, .profile-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+}
+
+.section:last-child, .detail-item:last-child, .profile-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* --- SECTION 4: HEADER STANDARDIZATION --- */
+.header, .profile-header, .modal-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+  text-align: center;
+}
+
+/* --- SECTION 5: GRID LAYOUTS --- */
+.grid, .stats-grid, .gunas-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* --- SECTION 6: NAVIGATION STANDARDIZATION --- */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+  border-bottom: 1px solid var(--color-bronze);
+  height: 60px;
+}
+
+.nav-title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--color-bronze-glow);
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-bronze-glow);
+}
+
+.nav-link i {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.nav-placeholder {
+  width: 60px; /* Same width as menu button for balance */
+}
+
+/* Footer navigation links */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.footer-nav-link {
+  color: var(--color-text-muted);
+}
+
+.footer-nav-link:hover {
+  color: var(--color-bronze-glow);
+}
+
+/* --- SECTION 7: RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  .container, .screen-container, .oracle-container, .profile-container, .game-wrapper {
+    padding: 1.5rem;
+  }
+  
+  .card, .profile-card, .result-content, .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-title {
+    font-size: 1.4rem;
+  }
+}

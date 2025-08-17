@@ -1,0 +1,47 @@
+name: Samsara Saga CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Validate HTML
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y html-xml-utils
+        find . -name "*.html" -exec hxnormalize -x {} \; | hxselect -s '\n' -c "html"
+      continue-on-error: true
+    
+    - name: Validate CSS
+      run: |
+        sudo npm install -g csslint
+        find . -name "*.css" -exec csslint {} \;
+      continue-on-error: true
+    
+    - name: Validate JavaScript
+      run: |
+        sudo npm install -g jshint
+        find . -name "*.js" -exec jshint {} \;
+      continue-on-error: true
+  
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: .

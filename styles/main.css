@@ -465,32 +465,68 @@ body::after {
   font-size: 0.9rem;
 }
 
-/* ACTION BUTTON */
-#action-button, .action-button {
-  margin-top: 2rem;
+/* STANDARDIZED BUTTON STYLING */
+button, .button, #action-button, .action-button, .choice-button, .option, .menu-button, .control-button {
   background: transparent;
   border: 1px solid var(--color-bronze);
-  color: var(--color-bronze-glow);
+  color: var(--color-text);
   padding: 0.75rem 1.5rem;
   border-radius: 5px;
   font-family: var(--font-body);
   font-size: 1rem;
-  transition: background-color 0.3s, color 0.3s;
-  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  margin: 0.5rem 0;
 }
 
-#action-button:hover, .action-button:hover {
+button:hover, .button:hover, #action-button:hover, .action-button:hover, 
+.choice-button:hover, .option:hover, .menu-button:hover, .control-button:hover {
+  background-color: rgba(224, 150, 88, 0.1);
+  box-shadow: 0 0 25px 8px rgba(224, 150, 88, 0.15);
+  transform: translateY(-3px);
+}
+
+button:active, .button:active, #action-button:active, .action-button:active,
+.choice-button:active, .option:active, .menu-button:active, .control-button:active {
+  transform: translateY(0);
+}
+
+.primary-button, .action-button.primary {
   background-color: var(--color-bronze);
   color: var(--color-stone-dark);
 }
 
-.action-button.primary {
-  background-color: var(--color-bronze);
-  color: var(--color-stone-dark);
-}
-
-.action-button.primary:hover {
+.primary-button:hover, .action-button.primary:hover {
   background-color: var(--color-bronze-glow);
+}
+
+/* Button with icon styling */
+.button-with-icon, .choice-button, .option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.button-icon, .choice-icon, .option-icon {
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(169, 113, 66, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--color-bronze-glow);
+  transition: all 0.3s ease;
+}
+
+.button-with-icon:hover .button-icon, 
+.choice-button:hover .choice-icon, 
+.option:hover .option-icon {
+  background-color: rgba(224, 150, 88, 0.2);
+  transform: scale(1.1);
 }
 
 /* --- SECTION 10: CHARACTER PROFILE STYLING --- */

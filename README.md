@@ -2,6 +2,19 @@
 
 Samsara Saga is a narrative-driven game based on Hindu/Vedic concepts of karma, dharma, and spiritual evolution. In this journey through multiple acts, your choices shape your karma and determine your path through the cycle of rebirth.
 
+![Samsara Saga](https://via.placeholder.com/800x400?text=Samsara+Saga)
+
+## UI/UX Enhancement
+
+The game has received a comprehensive UI/UX enhancement that creates a more immersive, visually engaging experience:
+
+- **Spiritual Visual Theme**: Cohesive design with mandalas, sacred geometry, and mystical effects
+- **Interactive Elements**: Custom cursor, smooth transitions, and responsive feedback
+- **Character Visualization**: Visual representations of Nakshatra traits, Guna balance, and elemental alignments
+- **Responsive Design**: Adaptable layouts for different screen sizes and devices
+
+For detailed information about the UI/UX enhancements, see [UI_UX_ENHANCEMENT_DOCUMENTATION.md](UI_UX_ENHANCEMENT_DOCUMENTATION.md) and [STYLE_GUIDE.md](STYLE_GUIDE.md).
+
 ## Game Structure
 
 The game is built with a modular architecture consisting of four core engine files:
@@ -63,7 +76,7 @@ The game is divided into three acts, each with its own set of scenes, choices, a
 
 ### Option 2: Direct File Access
 
-1. Open `index.html` directly in a web browser
+1. Open `SS.html` directly in a web browser
 2. Start a new game or load a saved game
 3. Choose your Nakshatra (birth star) to begin your journey
 4. Navigate through the story by making choices and solving puzzles
@@ -86,9 +99,15 @@ Note: Some browsers may restrict localStorage access when opening files directly
 
 ```
 samsara-saga/
-├── index.html              # Main HTML file
-├── styles.css              # Base CSS styling
-├── game-styles.css         # Enhanced game styling
+├── SS.html                 # Starting page (index)
+├── CB.html                 # Character builder
+├── Gameplay.html           # Main gameplay interface
+├── character-profile.html  # Character details page
+├── styles/                 # CSS directory
+│   ├── main.css            # Core styling
+│   ├── animations.css      # Animation definitions
+│   ├── character-traits.css # Character visualization
+│   └── layout.css          # Standardized layout
 ├── GameStateManager.js     # Game state management
 ├── StoryEngine.js          # Story progression logic
 ├── UIController.js         # UI rendering
@@ -105,11 +124,11 @@ samsara-saga/
 ├── ACT3storyData.js        # Act 3 story content
 ├── server.js               # Simple HTTP server
 ├── run.sh                  # Server startup script
-├── 404.html                # 404 error page
-├── test.js                 # Test script (for development)
+├── commit-changes.sh       # Git commit helper script
+├── STYLE_GUIDE.md          # UI/UX style guide
+├── UI_UX_ENHANCEMENT_DOCUMENTATION.md # UI/UX documentation
 ├── ARCHITECTURE.md         # Architecture documentation
 ├── GAME_MECHANICS.md       # Game mechanics documentation
-├── todo.md                 # Development task list
 └── README.md               # This file
 ```
 
@@ -129,8 +148,21 @@ The game is built using vanilla JavaScript, HTML, and CSS. It uses a modular arc
 
 5. **Strategy Pattern:** The PuzzleEngine uses different strategies to evaluate different types of puzzles.
 
+### Contributing
+
+To contribute to this project:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b new-feature`
+3. Make your changes
+4. Commit your changes using the provided script: `./commit-changes.sh`
+5. Push to your branch: `git push origin new-feature`
+6. Submit a pull request
+
 ## Credits
 
 Samsara Saga is a fictional game created for educational purposes. It draws inspiration from Hindu/Vedic concepts and mythology.
 
-Game mechanics enhancement by NinjaTech AI.
+- Original Game Logic: Sumanth Udupi
+- UI/UX Enhancement: NinjaTech AI
+- Game mechanics enhancement by NinjaTech AI

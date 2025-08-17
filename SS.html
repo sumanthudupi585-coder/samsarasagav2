@@ -10,9 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Main Stylesheet -->
+    <!-- Main Stylesheets -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/layout.css">
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
@@ -51,6 +52,16 @@
             </div>
         </div>
     </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-placeholder"></div>
+        <div class="nav-title">Samsara Saga</div>
+        <a href="#" class="nav-link" id="menu-button">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </a>
+    </nav>
 
     <main class="screen-container">
         <h1 class="game-title text-fade-in">Samsara Saga</h1>
@@ -105,8 +116,14 @@
         </a>
 
         <div class="footer-links text-fade-in-delay-3">
-            <a href="#" class="footer-link" id="about-link">About</a>
-            <a href="#" class="footer-link" id="credits-link">Credits</a>
+            <a href="#" class="nav-link footer-nav-link" id="about-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="#" class="nav-link footer-nav-link" id="credits-link">
+                <i class="fas fa-award"></i>
+                <span>Credits</span>
+            </a>
         </div>
     </main>
 
