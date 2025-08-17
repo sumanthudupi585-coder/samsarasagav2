@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsara Saga - Game Mechanics Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="game-styles.css">
+    <style>
+        #test-console {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 5px;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        .test-success {
+            color: #4caf50;
+        }
+        .test-error {
+            color: #f44336;
+        }
+        .test-info {
+            color: #2196f3;
+        }
+        .test-warning {
+            color: #ff9800;
+        }
+        .test-header {
+            color: #9c27b0;
+            font-weight: bold;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <header id="game-header">
+            <h1>Samsara Saga - Game Mechanics Test</h1>
+        </header>
+        
+        <div id="game-area">
+            <div id="scene-container">
+                <h2 id="scene-title">Testing Game Mechanics</h2>
+                <div id="scene-text">
+                    <p>This page tests the new game mechanics systems to ensure they're working properly.</p>
+                    <p>Check the console below for test results.</p>
+                    
+                    <div id="test-controls">
+                        <button id="run-tests" class="choice-button">Run Tests</button>
+                        <button id="clear-console" class="choice-button">Clear Console</button>
+                    </div>
+                    
+                    <div id="test-console"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load data files first -->
+    <script src="nakshatraData.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="ACT1storyData.js"></script>
+    <script src="ACT2storyData.js"></script>
+    <script src="ACT3storyData.js"></script>
+    
+    <!-- Load engine files -->
+    <script src="ProgressionSystem.js"></script>
+    <script src="QuestSystem.js"></script>
+    <script src="VisualEffects.js"></script>
+    <script src="AudioManager.js"></script>
+    <script src="GameStateManager.js"></script>
+    <script src="StoryEngine.js"></script>
+    <script src="PuzzleEngine.js"></script>
+    <script src="UIController.js"></script>
+    
+    <!-- Load test script -->
+    <script>
+        // Override console.log to display in the test console
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+        const originalConsoleInfo = console.info;
+        const originalConsoleAssert = console.assert;
+        
+        const testConsole = document.getElementById('test-console');
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            const message = args.join(' ');
+            appendToTestConsole(message);
+        };
+        
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            const message = args.join(' ');
+            appendToTestConsole(message, 'test-error');
+        };
+        
+        console.warn = function(...args) {
+            originalConsoleWarn.apply(console, args);
+            const message = args.join(' ');
+            appendToTestConsole(message, 'test-warning');
+        };
+        
+        console.info = function(...args) {
+            originalConsoleInfo.apply(console, args);
+            const message = args.join(' ');
+            appendToTestConsole(message, 'test-info');
+        };
+        
+        console.assert = function(condition, ...args) {
+            originalConsoleAssert.apply(console, [condition, ...args]);
+            if (!condition) {
+                const message = args.join(' ');
+                appendToTestConsole(`Assertion failed: ${message}`, 'test-error');
+            } else {
+                appendToTestConsole(`Assertion passed: ${args.join(' ')}`, 'test-success');
+            }
+        };
+        
+        function appendToTestConsole(message, className = '') {
+            const line = document.createElement('div');
+            line.className = className;
+            line.textContent = message;
+            testConsole.appendChild(line);
+            testConsole.scrollTop = testConsole.scrollHeight;
+        }
+        
+        // Test functions
+        function testGameStateManager() {
+            appendToTestConsole('Testing GameStateManager...', 'test-header');
+            
+            // Create a new game state
+            window.gameStateManager = new GameStateManager();
+            gameStateManager.init();
+            
+            // Set up player profile
+            gameStateManager.setupPlayerProfile("Ashwini");
+            
+            // Test inventory functions
+            gameStateManager.addToInventory("Test Item");
+            console.assert(gameStateManager.hasItem("Test Item"), "Item should be in inventory");
+            
+            gameStateManager.removeFromInventory("Test Item");
+            console.assert(!gameStateManager.hasItem("Test Item"), "Item should be removed from inventory");
+            
+            // Test special item functions
+            const specialItem = {
+                id: "test_special_item",
+                name: "Test Special Item",
+                description: "A test special item",
+                icon: "✨",
+                effect: "Does something special"
+            };
+            
+            gameStateManager.addSpecialItem(specialItem);
+            console.assert(gameStateManager.hasSpecialItem("test_special_item"), "Special item should be added");
+            
+            gameStateManager.removeSpecialItem("test_special_item");
+            console.assert(!gameStateManager.hasSpecialItem("test_special_item"), "Special item should be removed");
+            
+            // Test karma functions
+            const initialKarma = gameStateManager.playerState.karma;
+            gameStateManager.updateKarma(10);
+            console.assert(gameStateManager.playerState.karma === initialKarma + 10, "Karma should increase by 10");
+            
+            // Test dharmic profile functions
+            const initialDharma = gameStateManager.playerState.dharmicProfile.dharma;
+            gameStateManager.updateDharmicProfile("dharma", 5);
+            console.assert(gameStateManager.playerState.dharmicProfile.dharma === initialDharma + 5, "Dharma should increase by 5");
+            
+            appendToTestConsole('GameStateManager tests completed.', 'test-success');
+        }
+
+        // Test ProgressionSystem
+        function testProgressionSystem() {
+            appendToTestConsole('Testing ProgressionSystem...', 'test-header');
+            
+            try {
+                window.progressionSystem = new ProgressionSystem(gameStateManager);
+                
+                // Initialize progression data
+                progressionSystem.initProgressionData();
+                
+                // Test XP functions
+                const initialXP = gameStateManager.playerState.progression.xp;
+                const result = progressionSystem.awardXP(50);
+                console.assert(gameStateManager.playerState.progression.xp === initialXP + 50, "XP should increase by 50");
+                
+                // Test ability functions
+                const testAbility = "test_ability";
+                gameStateManager.playerState.progression.abilities.push(testAbility);
+                console.assert(progressionSystem.hasAbility(testAbility), "Should have test ability");
+                
+                appendToTestConsole('ProgressionSystem tests completed.', 'test-success');
+            } catch (error) {
+                console.error("Error testing ProgressionSystem:", error);
+            }
+        }
+
+        // Test QuestSystem
+        function testQuestSystem() {
+            appendToTestConsole('Testing QuestSystem...', 'test-header');
+            
+            try {
+                window.questSystem = new QuestSystem(gameStateManager, progressionSystem);
+                
+                // Initialize quest data
+                questSystem.initQuestData();
+                
+                // Test quest functions
+                const availableQuests = questSystem.getAvailableQuestsForCurrentAct();
+                console.info(`Available quests for Act ${gameStateManager.playerState.currentAct}: ${availableQuests.length}`);
+                
+                if (availableQuests.length > 0) {
+                    const firstQuest = availableQuests[0];
+                    const result = questSystem.startQuest(firstQuest.id);
+                    console.assert(result.success, "Quest should start successfully");
+                    
+                    const activeQuests = questSystem.getActiveQuests();
+                    console.assert(activeQuests.length > 0, "Should have active quests");
+                }
+                
+                appendToTestConsole('QuestSystem tests completed.', 'test-success');
+            } catch (error) {
+                console.error("Error testing QuestSystem:", error);
+            }
+        }
+
+        // Test VisualEffects
+        function testVisualEffects() {
+            appendToTestConsole('Testing VisualEffects...', 'test-header');
+            
+            try {
+                window.visualEffects = new VisualEffects();
+                
+                // Initialize visual effects
+                visualEffects.init();
+                
+                appendToTestConsole('VisualEffects initialized successfully.', 'test-success');
+            } catch (error) {
+                console.error("Error testing VisualEffects:", error);
+            }
+        }
+
+        // Test AudioManager
+        function testAudioManager() {
+            appendToTestConsole('Testing AudioManager...', 'test-header');
+            
+            try {
+                window.audioManager = new AudioManager();
+                
+                // Initialize audio manager
+                const initialized = audioManager.init();
+                console.info(`AudioManager initialized: ${initialized}`);
+                
+                appendToTestConsole('AudioManager tests completed.', 'test-success');
+            } catch (error) {
+                console.error("Error testing AudioManager:", error);
+            }
+        }
+
+        // Run all tests
+        function runAllTests() {
+            appendToTestConsole('Running all tests...', 'test-header');
+            
+            try {
+                testGameStateManager();
+                testProgressionSystem();
+                testQuestSystem();
+                testVisualEffects();
+                testAudioManager();
+                
+                appendToTestConsole('All tests completed!', 'test-success');
+            } catch (error) {
+                console.error("Error during tests:", error);
+            }
+        }
+
+        // Set up event listeners
+        document.getElementById('run-tests').addEventListener('click', runAllTests);
+        document.getElementById('clear-console').addEventListener('click', () => {
+            document.getElementById('test-console').innerHTML = '';
+        });
+    </script>
+</body>
+</html>
