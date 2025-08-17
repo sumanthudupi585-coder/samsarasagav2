@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Character Profile - Samsara Saga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/character-profile.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+    <div id="cursor-container">
+        <svg class="chakra-cursor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e09658" stroke-width="1">
+            <circle cx="12" cy="12" r="10"/>
+            <g transform="translate(12,12)">
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(0)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(30)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(60)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(90)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(120)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(150)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(180)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(210)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(240)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(270)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(300)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(330)"/>
+            </g>
+            <circle cx="12" cy="12" r="2" fill="#e09658"/>
+        </svg>
+    </div>
+
+    <main class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <h1 class="profile-name" id="nakshatra-name">Loading...</h1>
+                <p class="profile-subtitle" id="nakshatra-symbol-deity">Symbol: • Deity:</p>
+            </div>
+
+            <div class="profile-details">
+                <div class="detail-item">
+                    <div class="detail-title">Core Power (Shakti)</div>
+                    <div id="shakti-description">Loading...</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-title">Primary Motivation (Pada)</div>
+                    <div id="pada-description">Loading...</div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-title">Gunas (Energetic Qualities)</div>
+                    <div class="gunas-grid">
+                        <div class="guna-item">
+                            <div class="guna-name">Sattva</div>
+                            <div class="guna-value" id="sattva-value">0</div>
+                        </div>
+                        <div class="guna-item">
+                            <div class="guna-name">Rajas</div>
+                            <div class="guna-value" id="rajas-value">0</div>
+                        </div>
+                        <div class="guna-item">
+                            <div class="guna-name">Tamas</div>
+                            <div class="guna-value" id="tamas-value">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-button" id="back-button">Change Character</button>
+                <button class="action-button primary" id="start-journey">Begin Journey</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Nakshatra data
+        const nakshatraData = {
+            1: { name: 'Ashwini', deity: 'Ashvins', symbol: "Horse's Head", shakti: 'To heal quickly' },
+            2: { name: 'Bharani', deity: 'Yama', symbol: 'Yoni', shakti: 'To renew and purify' },
+            3: { name: 'Krittika', deity: 'Agni', symbol: 'Knife or Spear', shakti: 'To burn illusion' },
+            4: { name: 'Rohini', deity: 'Brahma', symbol: 'Cart or Chariot', shakti: 'To make things grow' },
+            5: { name: 'Mrigashira', deity: 'Soma', symbol: "Deer's Head", shakti: 'To find fulfillment' },
+            6: { name: 'Ardra', deity: 'Rudra', symbol: 'Teardrop', shakti: 'To feel and act' },
+            7: { name: 'Punarvasu', deity: 'Aditi', symbol: 'Bow and Quiver', shakti: 'To regenerate and recover' },
+            8: { name: 'Pushya', deity: 'Brihaspati', symbol: "Cow's Udder", shakti: 'To create spiritual energy' },
+            9: { name: 'Ashlesha', deity: 'Nagas', symbol: 'Serpent', shakti: 'To poison and heal' },
+            10: { name: 'Magha', deity: 'Pitrs', symbol: 'Royal Throne', shakti: 'To leave the body' },
+            11: { name: 'Purva Phalguni', deity: 'Bhaga', symbol: 'Front Legs of Bed', shakti: 'To find love and enjoyment' },
+            12: { name: 'Uttara Phalguni', deity: 'Aryaman', symbol: 'Four Legs of Bed', shakti: 'To accumulate security' },
+            13: { name: 'Hasta', deity: 'Savitri', symbol: 'Hand or Fist', shakti: 'To manifest desires' },
+            14: { name: 'Chitra', deity: 'Tvastar', symbol: 'Bright Jewel', shakti: 'To accumulate merit' },
+            15: { name: 'Swati', deity: 'Vayu', symbol: 'Shoot of a Plant', shakti: 'To scatter like the wind' },
+            16: { name: 'Vishakha', deity: 'Indra-Agni', symbol: 'Triumphal Archway', shakti: 'To achieve many things' },
+            17: { name: 'Anuradha', deity: 'Mitra', symbol: 'Lotus Flower', shakti: 'To worship (Bhakti)' },
+            18: { name: 'Jyeshtha', deity: 'Indra', symbol: 'Umbrella', shakti: 'To rise and conquer' },
+            19: { name: 'Mula', deity: 'Nirriti', symbol: 'Tied Bundle of Roots', shakti: 'To ruin or destroy' },
+            20: { name: 'Purva Ashadha', deity: 'Apas (Water)', symbol: 'Fan', shakti: 'To invigorate or strengthen' },
+            21: { name: 'Uttara Ashadha', deity: 'Visvedevas', symbol: 'Elephant Tusk', shakti: 'To win for the highest good' },
+            22: { name: 'Shravana', deity: 'Vishnu', symbol: 'Ear', shakti: 'To connect' },
+            23: { name: 'Dhanishtha', deity: 'Vasus', symbol: 'Drum or Flute', shakti: 'To give fame and abundance' },
+            24: { name: 'Shatabhisha', deity: 'Varuna', symbol: 'Empty Circle', shakti: 'To heal and support' },
+            25: { name: 'Purva Bhadrapada', deity: 'Aja Ekapada', symbol: 'Two Front Legs of Cot', shakti: 'To raise a person up' },
+            26: { name: 'Uttara Bhadrapada', deity: 'Ahir Budhyana', symbol: 'Back Legs of Cot', shakti: 'To bring rain and stability' },
+            27: { name: 'Revati', deity: 'Pushan', symbol: 'Pair of Fish', shakti: 'To nourish and transcend' },
+        };
+
+        const padaDescriptions = {
+            'Dharma': 'Your compass is your highest purpose and sense of duty.',
+            'Artha': 'Your compass is the practical need for security and resources.',
+            'Kama': 'Your compass is the drive for connection, pleasure, and fulfillment.',
+            'Moksha': 'Your compass is the pull towards peace and ultimate freedom.'
+        };
+
+        // Initialize the profile page
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nakshatraNum = urlParams.get('nakshatra');
+            const pada = urlParams.get('pada');
+            const guna3 = urlParams.get('guna3');
+
+            if (nakshatraNum && nakshatraData[nakshatraNum]) {
+                const nakshatra = nakshatraData[nakshatraNum];
+                
+                // Update profile information
+                document.getElementById('nakshatra-name').textContent = nakshatra.name;
+                document.getElementById('nakshatra-symbol-deity').textContent = 
+                    `Symbol: ${nakshatra.symbol} • Deity: ${nakshatra.deity}`;
+                document.getElementById('shakti-description').textContent = nakshatra.shakti;
+                
+                // Update pada description
+                if (pada && padaDescriptions[pada]) {
+                    document.getElementById('pada-description').textContent = padaDescriptions[pada];
+                }
+
+                // Set initial guna values based on nakshatra
+                setGunaValues(nakshatraNum);
+            }
+
+            // Set up button event listeners
+            document.getElementById('back-button').addEventListener('click', () => {
+                window.location.href = 'CB.html';
+            });
+
+            document.getElementById('start-journey').addEventListener('click', () => {
+                window.location.href = `Gameplay.html?${urlParams.toString()}`;
+            });
+        });
+
+        // Set guna values based on nakshatra number
+        function setGunaValues(nakshatraNum) {
+            let sattva = 0, rajas = 0, tamas = 0;
+            
+            // Simple algorithm to set guna values based on nakshatra number
+            if (nakshatraNum >= 1 && nakshatraNum <= 9) {
+                sattva = 1;
+                rajas = 2;
+                tamas = 0;
+            } else if (nakshatraNum >= 10 && nakshatraNum <= 18) {
+                sattva = 0;
+                rajas = 1;
+                tamas = 2;
+            } else {
+                sattva = 2;
+                rajas = 0;
+                tamas = 1;
+            }
+            
+            // Update the UI
+            document.getElementById('sattva-value').textContent = sattva;
+            document.getElementById('rajas-value').textContent = rajas;
+            document.getElementById('tamas-value').textContent = tamas;
+        }
+
+        // Custom cursor functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the device has a fine pointer (e.g., a mouse)
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.body.classList.add('custom-cursor-active');
+
+                const cursorContainer = document.getElementById('cursor-container');
+
+                document.addEventListener('mousemove', (e) => {
+                    if (cursorContainer) {
+                        cursorContainer.style.left = e.clientX + 'px';
+                        cursorContainer.style.top = e.clientY + 'px';
+                    }
+                });
+
+                document.addEventListener('mouseover', (e) => {
+                    if (e.target.matches('a, button, .action-button')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.add('active');
+                        }
+                    }
+                });
+
+                document.addEventListener('mouseout', (e) => {
+                    if (e.target.matches('a, button, .action-button')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

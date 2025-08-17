@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Oracle Within - Discover Your Nakshatra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <div id="cursor-container">
+        <svg class="chakra-cursor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e09658" stroke-width="1">
+            <circle cx="12" cy="12" r="10"/>
+            <g transform="translate(12,12)">
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(0)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(30)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(60)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(90)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(120)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(150)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(180)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(210)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(240)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(270)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(300)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(330)"/>
+            </g>
+            <circle cx="12" cy="12" r="2" fill="#e09658"/>
+        </svg>
+    </div>
+
+    <main class="oracle-container">
+
+        <!-- Question 1: Gana -->
+        <div class="screen active" id="q1">
+            <h2 class="screen-title">The Oracle Within</h2>
+            <p class="screen-subtitle">How do you fundamentally perceive the world and your place in it?</p>
+            <div class="options-grid">
+                <button class="option" data-value="Deva">
+                    You believe success is achieved by aligning with a higher cosmic order and following established principles of compassion and peace.
+                </button>
+                <button class="option" data-value="Manushya">
+                    You believe success is achieved through pragmatic effort, social negotiation, and balancing personal needs with community responsibilities.
+                </button>
+                <button class="option" data-value="Rakshasa">
+                    You believe reality is shaped by individual will, and one must assert their own power and intuition—even if it means breaking the rules.
+                </button>
+            </div>
+        </div>
+
+        <!-- Question 2: Guna Level 1 -->
+        <div class="screen" id="q2">
+            <h2 class="screen-title">The Oracle Within</h2>
+            <p class="screen-subtitle">Looking at the broad arc of your life, what seems to be its central theme?</p>
+            <div class="options-grid">
+                <button class="option" data-value="Rajas">
+                    A life of constant action, creation, ambition, and a drive to make your mark on the world.
+                </button>
+                <button class="option" data-value="Tamas">
+                    A life focused on building, stabilizing, and deeply engaging with the material, tangible aspects of existence.
+                </button>
+                <button class="option" data-value="Sattva">
+                    A life with a persistent, underlying current pulling you toward knowledge, clarity, and a reality beyond the material.
+                </button>
+            </div>
+        </div>
+        
+        <!-- Question 3: Shakti (Dynamically populated) -->
+        <div class="screen" id="q3">
+            <h2 class="screen-title">The Oracle Within</h2>
+            <p class="screen-subtitle">Which of these powers best describes your effectiveness?</p>
+            <div class="options-grid" id="q3-options">
+                <!-- Options will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Refining Question 1: Pada -->
+        <div class="screen" id="q4">
+            <h2 class="screen-title">The Oracle Within</h2>
+            <p class="screen-subtitle">When faced with a major life decision, what is your ultimate compass?</p>
+            <div class="options-grid">
+                <button class="option" data-value="Dharma">
+                    The call of your highest principles and sense of duty.
+                </button>
+                <button class="option" data-value="Artha">
+                    The practical need for resources and a stable foundation.
+                </button>
+                <button class="option" data-value="Kama">
+                    The drive for connection, pleasure, and fulfillment of desires.
+                </button>
+                 <button class="option" data-value="Moksha">
+                    The underlying pull towards emotional peace and ultimate freedom.
+                </button>
+            </div>
+        </div>
+
+        <!-- Refining Question 2: Guna Level 3 -->
+        <div class="screen" id="q5">
+            <h2 class="screen-title">The Oracle Within</h2>
+            <p class="screen-subtitle">In your day-to-day existence, what is your default mode of being?</p>
+            <div class="options-grid">
+                <button class="option" data-value="Sattva">
+                    Driven by a need for harmony, clarity, and peace.
+                </button>
+                <button class="option" data-value="Rajas">
+                    Propelled by passion, ambition, and a constant need to be doing something.
+                </button>
+                <button class="option" data-value="Tamas">
+                    A state of inertia, where it takes significant force to change your course.
+                </button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div class="screen" id="result-screen">
+            <div class="result-content">
+                <h1 class="result-nakshatra-name" id="result-name"></h1>
+                <p class="result-symbol-deity" id="result-symbol"></p>
+                <div class="result-profile">
+                    <div class="profile-item">
+                        <div class="profile-title">Core Power (Shakti)</div>
+                        <div id="result-shakti"></div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="profile-title">Primary Motivation (Pada)</div>
+                        <div id="result-pada"></div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="profile-title">Daily Energy (Guna)</div>
+                        <div id="result-guna3"></div>
+                    </div>
+                </div>
+                 <button id="action-button">Begin the Journey</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // --- DATA ---
+        const shaktiQuestions = {
+            'Deva-Rajas': [
+                { text: 'The power to heal quickly and initiate.', result: 1 },
+                { text: 'The power to find fulfillment and be on a quest.', result: 5 },
+                { text: 'The power to regenerate and recover resources.', result: 7 },
+                { text: 'The power to create spiritual energy and to nourish.', result: 8 },
+            ],
+            'Deva-Tamas': [
+                { text: 'The power to manifest desires and place them in your hands.', result: 13 },
+                { text: 'The power to scatter and disperse, like the wind.', result: 15 },
+                { text: 'The power to worship and create devotional connection.', result: 17 },
+            ],
+            'Deva-Sattva': [
+                { text: 'The power to connect and link things together.', result: 22 },
+                { text: 'The power to nourish, protect, and help others transcend.', result: 27 },
+            ],
+            'Manushya-Rajas': [
+                 { text: 'The power to renew and carry burdens of transformation.', result: 2 },
+                 { text: 'The power to make things grow and create abundance.', result: 4 },
+                 { text: 'The power to make effort and act, often bringing transformative storms.', result: 6 },
+            ],
+            'Manushya-Tamas': [
+                { text: 'The power to find love, enjoyment, and creative procreation.', result: 11 },
+                { text: 'The power to accumulate security and build through alliances.', result: 12 },
+            ],
+            'Manushya-Sattva': [
+                { text: 'The power to invigorate, strengthen, and gain victory.', result: 20 },
+                { text: 'The power to win for the highest good and achieve permanent victory.', result: 21 },
+                { text: 'The power to raise a person up and give spiritual insight.', result: 25 },
+                { text: 'The power to bring rain, stability, and growth.', result: 26 },
+            ],
+            'Rakshasa-Rajas': [
+                { text: 'The power to burn, purify, and cut through illusion to get to the truth.', result: 3 },
+                { text: 'The power to poison, paralyze, and also to heal through deep insight.', result: 9 },
+            ],
+            'Rakshasa-Tamas': [
+                { text: 'The power to leave the body, signifying a disconnection from the past.', result: 10 },
+                { text: 'The power to accumulate merit through good works.', result: 14 },
+                { text: 'The power to achieve many things and have a wide field of action.', result: 16 },
+                { text: 'The power to rise, conquer, and be courageous.', result: 18 },
+            ],
+            'Rakshasa-Sattva': [
+                { text: 'The power to ruin, destroy, and uproot things to get to the core.', result: 19 },
+                { text: 'The power to give fame and abundance.', result: 23 },
+                { text: 'The power to heal and support, often through unconventional means.', result: 24 },
+            ],
+        };
+
+        const nakshatraData = {
+            1: { name: 'Ashwini', deity: 'Ashvins', symbol: "Horse's Head", shakti: 'To heal quickly' },
+            2: { name: 'Bharani', deity: 'Yama', symbol: 'Yoni', shakti: 'To renew and purify' },
+            3: { name: 'Krittika', deity: 'Agni', symbol: 'Knife or Spear', shakti: 'To burn illusion' },
+            4: { name: 'Rohini', deity: 'Brahma', symbol: 'Cart or Chariot', shakti: 'To make things grow' },
+            5: { name: 'Mrigashira', deity: 'Soma', symbol: "Deer's Head", shakti: 'To find fulfillment' },
+            6: { name: 'Ardra', deity: 'Rudra', symbol: 'Teardrop', shakti: 'To feel and act' },
+            7: { name: 'Punarvasu', deity: 'Aditi', symbol: 'Bow and Quiver', shakti: 'To regenerate and recover' },
+            8: { name: 'Pushya', deity: 'Brihaspati', symbol: "Cow's Udder", shakti: 'To create spiritual energy' },
+            9: { name: 'Ashlesha', deity: 'Nagas', symbol: 'Serpent', shakti: 'To poison and heal' },
+            10: { name: 'Magha', deity: 'Pitrs', symbol: 'Royal Throne', shakti: 'To leave the body' },
+            11: { name: 'Purva Phalguni', deity: 'Bhaga', symbol: 'Front Legs of Bed', shakti: 'To find love and enjoyment' },
+            12: { name: 'Uttara Phalguni', deity: 'Aryaman', symbol: 'Four Legs of Bed', shakti: 'To accumulate security' },
+            13: { name: 'Hasta', deity: 'Savitri', symbol: 'Hand or Fist', shakti: 'To manifest desires' },
+            14: { name: 'Chitra', deity: 'Tvastar', symbol: 'Bright Jewel', shakti: 'To accumulate merit' },
+            15: { name: 'Swati', deity: 'Vayu', symbol: 'Shoot of a Plant', shakti: 'To scatter like the wind' },
+            16: { name: 'Vishakha', deity: 'Indra-Agni', symbol: 'Triumphal Archway', shakti: 'To achieve many things' },
+            17: { name: 'Anuradha', deity: 'Mitra', symbol: 'Lotus Flower', shakti: 'To worship (Bhakti)' },
+            18: { name: 'Jyeshtha', deity: 'Indra', symbol: 'Umbrella', shakti: 'To rise and conquer' },
+            19: { name: 'Mula', deity: 'Nirriti', symbol: 'Tied Bundle of Roots', shakti: 'To ruin or destroy' },
+            20: { name: 'Purva Ashadha', deity: 'Apas (Water)', symbol: 'Fan', shakti: 'To invigorate or strengthen' },
+            21: { name: 'Uttara Ashadha', deity: 'Visvedevas', symbol: 'Elephant Tusk', shakti: 'To win for the highest good' },
+            22: { name: 'Shravana', deity: 'Vishnu', symbol: 'Ear', shakti: 'To connect' },
+            23: { name: 'Dhanishtha', deity: 'Vasus', symbol: 'Drum or Flute', shakti: 'To give fame and abundance' },
+            24: { name: 'Shatabhisha', deity: 'Varuna', symbol: 'Empty Circle', shakti: 'To heal and support' },
+            25: { name: 'Purva Bhadrapada', deity: 'Aja Ekapada', symbol: 'Two Front Legs of Cot', shakti: 'To raise a person up' },
+            26: { name: 'Uttara Bhadrapada', deity: 'Ahir Budhyana', symbol: 'Back Legs of Cot', shakti: 'To bring rain and stability' },
+            27: { name: 'Revati', deity: 'Pushan', symbol: 'Pair of Fish', shakti: 'To nourish and transcend' },
+        };
+
+        const refiningText = {
+            pada: {
+                Dharma: 'Your compass is your highest purpose and sense of duty.',
+                Artha: 'Your compass is the practical need for security and resources.',
+                Kama: 'Your compass is the drive for connection, pleasure, and fulfillment.',
+                Moksha: 'Your compass is the pull towards peace and ultimate freedom.',
+            },
+            guna3: {
+                Sattva: 'Your default state is one of harmony, clarity, and peace.',
+                Rajas: 'Your default state is one of passion, ambition, and action.',
+                Tamas: 'Your default state is one of stability and inertia.',
+            }
+        };
+
+        // --- LOGIC ---
+        let userAnswers = {};
+        let currentQuestion = 'q1';
+
+        function showScreen(screenId) {
+            const currentScreen = document.querySelector('.screen.active');
+            const nextScreen = document.getElementById(screenId);
+
+            if (currentScreen) {
+                currentScreen.classList.add('exiting');
+                setTimeout(() => {
+                    currentScreen.classList.remove('active', 'exiting');
+                    if (nextScreen) nextScreen.classList.add('active');
+                }, 800);
+            } else if (nextScreen) {
+                 nextScreen.classList.add('active');
+            }
+            currentQuestion = screenId;
+        }
+        
+        function populateShaktiQuestion() {
+            const key = `${userAnswers.gana}-${userAnswers.guna1}`;
+            const options = shaktiQuestions[key];
+            const container = document.getElementById('q3-options');
+            container.innerHTML = ''; 
+
+            if (options) {
+                options.forEach(opt => {
+                    const button = document.createElement('button');
+                    button.className = 'option';
+                    button.dataset.value = opt.result;
+                    button.textContent = opt.text;
+                    container.appendChild(button);
+                });
+            }
+        }
+        
+        function showResult() {
+            const result = nakshatraData[userAnswers.nakshatraNum];
+            document.getElementById('result-name').textContent = result.name;
+            document.getElementById('result-symbol').textContent = `Symbol: ${result.symbol} • Deity: ${result.deity}`;
+            document.getElementById('result-shakti').textContent = result.shakti;
+            document.getElementById('result-pada').textContent = refiningText.pada[userAnswers.pada];
+            document.getElementById('result-guna3').textContent = refiningText.guna3[userAnswers.guna3];
+            showScreen('result-screen');
+        }
+
+        document.querySelector('.oracle-container').addEventListener('click', (e) => {
+            if (!e.target.matches('.option')) return;
+            
+            const button = e.target;
+            const value = button.dataset.value;
+
+            switch(currentQuestion) {
+                case 'q1': userAnswers.gana = value; showScreen('q2'); break;
+                case 'q2': userAnswers.guna1 = value; populateShaktiQuestion(); showScreen('q3'); break;
+                case 'q3': userAnswers.nakshatraNum = value; showScreen('q4'); break;
+                case 'q4': userAnswers.pada = value; showScreen('q5'); break;
+                case 'q5': userAnswers.guna3 = value; showResult(); break;
+            }
+        });
+
+        // Event listener for the new "Begin the Journey" button
+        document.getElementById('action-button').addEventListener('click', () => {
+            // Construct the URL with query parameters for the next screen
+            const params = new URLSearchParams({
+                nakshatra: userAnswers.nakshatraNum,
+                pada: userAnswers.pada,
+                guna3: userAnswers.guna3
+            }).toString();
+            
+            // Redirect to the next screen (you will create this HTML file later)
+            // For now, it will just try to navigate.
+            window.location.href = `character-profile.html?${params}`;
+        });
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the device has a fine pointer (e.g., a mouse)
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.body.classList.add('custom-cursor-active');
+
+                const cursorContainer = document.getElementById('cursor-container');
+
+                document.addEventListener('mousemove', (e) => {
+                    if (cursorContainer) {
+                        cursorContainer.style.left = e.clientX + 'px';
+                        cursorContainer.style.top = e.clientY + 'px';
+                    }
+                });
+
+                document.body.addEventListener('mouseover', (e) => {
+                    if (e.target.matches('a, button, .option, .mandala-link')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.add('active');
+                        }
+                    }
+                });
+
+                document.body.addEventListener('mouseout', (e) => {
+                    if (e.target.matches('a, button, .option, .mandala-link')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

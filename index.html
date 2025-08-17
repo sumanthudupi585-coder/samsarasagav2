@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsara Saga</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <header id="game-header">
+            <h1>Samsara Saga</h1>
+            <div id="status-display">
+                <div id="act-display">Act 1</div>
+                <div id="karma-display">Karma: 0</div>
+            </div>
+        </header>
+        
+        <div id="game-area">
+            <div id="scene-container">
+                <h2 id="scene-title">Welcome to Samsara Saga</h2>
+                <div id="scene-text">
+                    <!-- Scene text will be inserted here by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="choices-container">
+                <!-- Choices will be inserted here by JavaScript -->
+            </div>
+            
+            <div id="puzzle-container">
+                <!-- Puzzles will be inserted here by JavaScript -->
+            </div>
+        </div>
+        
+        <div id="game-sidebar">
+            <div id="inventory-display">
+                <h3>Inventory</h3>
+                <!-- Inventory items will be inserted here by JavaScript -->
+            </div>
+            
+            <div id="dharmic-profile">
+                <h3>Dharmic Profile</h3>
+                <!-- Dharmic profile will be inserted here by JavaScript -->
+            </div>
+            
+            <button id="save-game">Save Game</button>
+        </div>
+    </div>
+
+    <!-- Load data files first -->
+    <script src="nakshatraData.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="ACT1storyData.js"></script>
+    <script src="ACT2storyData.js"></script>
+    <script src="ACT3storyData.js"></script>
+    
+    <!-- Load engine files -->
+    <script src="GameStateManager.js"></script>
+    <script src="StoryEngine.js"></script>
+    <script src="PuzzleEngine.js"></script>
+    <script src="UIController.js"></script>
+    
+    <!-- Load main.js last -->
+    <script src="main.js"></script>
+    
+    <!-- Test script - REMOVE IN PRODUCTION -->
+    <!-- <script src="test.js"></script> -->
+</body>
+</html>

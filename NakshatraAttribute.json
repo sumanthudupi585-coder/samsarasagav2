@@ -1,0 +1,219 @@
+
+{
+  "Ashwini": {
+    "rulingPlanet": "Ketu",
+    "deity": "Ashvins",
+    "symbol": "Horse's Head",
+    "shakti": "To heal quickly",
+    "gana": "Deva",
+    "gunas": ["Rajas", "Rajas", "Rajas"]
+  },
+  "Bharani": {
+    "rulingPlanet": "Venus",
+    "deity": "Yama",
+    "symbol": "Yoni (Female Organ)",
+    "shakti": "To renew and purify",
+    "gana": "Manushya",
+    "gunas": ["Rajas", "Rajas", "Tamas"]
+  },
+  "Krittika": {
+    "rulingPlanet": "Sun",
+    "deity": "Agni",
+    "symbol": "Knife or Spear",
+    "shakti": "To burn illusion",
+    "gana": "Rakshasa",
+    "gunas": ["Rajas", "Rajas", "Sattva"]
+  },
+  "Rohini": {
+    "rulingPlanet": "Moon",
+    "deity": "Brahma/Prajapati",
+    "symbol": "Cart or Chariot",
+    "shakti": "To make things grow",
+    "gana": "Manushya",
+    "gunas": ["Rajas", "Tamas", "Rajas"]
+  },
+  "Mrigashira": {
+    "rulingPlanet": "Mars",
+    "deity": "Soma (Chandra)",
+    "symbol": "Deer's Head",
+    "shakti": "To find fulfillment",
+    "gana": "Deva",
+    "gunas": ["Rajas", "Tamas", "Tamas"]
+  },
+  "Ardra": {
+    "rulingPlanet": "Rahu",
+    "deity": "Rudra",
+    "symbol": "Teardrop, Human Head",
+    "shakti": "To feel and act",
+    "gana": "Manushya",
+    "gunas": ["Rajas", "Tamas", "Sattva"]
+  },
+  "Punarvasu": {
+    "rulingPlanet": "Jupiter",
+    "deity": "Aditi",
+    "symbol": "Bow and Quiver",
+    "shakti": "To regenerate and recover",
+    "gana": "Deva",
+    "gunas": ["Rajas", "Sattva", "Rajas"]
+  },
+  "Pushya": {
+    "rulingPlanet": "Saturn",
+    "deity": "Brihaspati",
+    "symbol": "Cow's Udder, Lotus",
+    "shakti": "To create spiritual energy",
+    "gana": "Deva",
+    "gunas": ["Rajas", "Sattva", "Tamas"]
+  },
+  "Ashlesha": {
+    "rulingPlanet": "Mercury",
+    "deity": "Nagas/Sarpas",
+    "symbol": "Serpent",
+    "shakti": "To poison and heal",
+    "gana": "Rakshasa",
+    "gunas": ["Rajas", "Sattva", "Sattva"]
+  },
+  "Magha": {
+    "rulingPlanet": "Ketu",
+    "deity": "Pitrs (Ancestors)",
+    "symbol": "Royal Throne",
+    "shakti": "To leave the body",
+    "gana": "Rakshasa",
+    "gunas": ["Tamas", "Rajas", "Rajas"]
+  },
+  "Purva Phalguni": {
+    "rulingPlanet": "Venus",
+    "deity": "Bhaga",
+    "symbol": "Front Legs of Bed",
+    "shakti": "To find love and enjoyment",
+    "gana": "Manushya",
+    "gunas": ["Tamas", "Rajas", "Tamas"]
+  },
+  "Uttara Phalguni": {
+    "rulingPlanet": "Sun",
+    "deity": "Aryaman",
+    "symbol": "Four Legs of Bed",
+    "shakti": "To accumulate security",
+    "gana": "Manushya",
+    "gunas": ["Tamas", "Rajas", "Sattva"]
+  },
+  "Hasta": {
+    "rulingPlanet": "Moon",
+    "deity": "Savitri (Surya)",
+    "symbol": "Hand or Fist",
+    "shakti": "To manifest desires",
+    "gana": "Deva",
+    "gunas": ["Tamas", "Tamas", "Rajas"]
+  },
+  "Chitra": {
+    "rulingPlanet": "Mars",
+    "deity": "Tvastar",
+    "symbol": "Bright Jewel or Pearl",
+    "shakti": "To accumulate merit",
+    "gana": "Rakshasa",
+    "gunas": ["Tamas", "Tamas", "Tamas"]
+  },
+  "Swati": {
+    "rulingPlanet": "Rahu",
+    "deity": "Vayu",
+    "symbol": "Shoot of a Plant",
+    "shakti": "To scatter like the wind",
+    "gana": "Deva",
+    "gunas": ["Tamas", "Tamas", "Sattva"]
+  },
+  "Vishakha": {
+    "rulingPlanet": "Jupiter",
+    "deity": "Indra-Agni",
+    "symbol": "Triumphant Archway",
+    "shakti": "To achieve many things",
+    "gana": "Rakshasa",
+    "gunas": ["Tamas", "Sattva", "Rajas"]
+  },
+  "Anuradha": {
+    "rulingPlanet": "Saturn",
+    "deity": "Mitra",
+    "symbol": "Lotus Flower",
+    "shakti": "To worship (Bhakti)",
+    "gana": "Deva",
+    "gunas": ["Tamas", "Sattva", "Tamas"]
+  },
+  "Jyeshtha": {
+    "rulingPlanet": "Mercury",
+    "deity": "Indra",
+    "symbol": "Umbrella, Earring",
+    "shakti": "To rise and conquer",
+    "gana": "Rakshasa",
+    "gunas": ["Tamas", "Sattva", "Sattva"]
+  },
+  "Mula": {
+    "rulingPlanet": "Ketu",
+    "deity": "Nirriti",
+    "symbol": "Tied Bundle of Roots",
+    "shakti": "To ruin or destroy",
+    "gana": "Rakshasa",
+    "gunas": ["Sattva", "Rajas", "Rajas"]
+  },
+  "Purva Ashadha": {
+    "rulingPlanet": "Venus",
+    "deity": "Apas (Water)",
+    "symbol": "Fan, Winnowing Basket",
+    "shakti": "To invigorate or strengthen",
+    "gana": "Manushya",
+    "gunas": ["Sattva", "Rajas", "Tamas"]
+  },
+  "Uttara Ashadha": {
+    "rulingPlanet": "Sun",
+    "deity": "Visvedevas",
+    "symbol": "Elephant Tusk",
+    "shakti": "To win for the highest good",
+    "gana": "Manushya",
+    "gunas": ["Sattva", "Rajas", "Sattva"]
+  },
+  "Shravana": {
+    "rulingPlanet": "Moon",
+    "deity": "Vishnu",
+    "symbol": "Ear",
+    "shakti": "To connect",
+    "gana": "Deva",
+    "gunas": ["Sattva", "Tamas", "Rajas"]
+  },
+  "Dhanishtha": {
+    "rulingPlanet": "Mars",
+    "deity": "Vasus",
+    "symbol": "Drum or Flute",
+    "shakti": "To give fame and abundance",
+    "gana": "Rakshasa",
+    "gunas": ["Sattva", "Tamas", "Tamas"]
+  },
+  "Shatabhisha": {
+    "rulingPlanet": "Rahu",
+    "deity": "Varuna",
+    "symbol": "Empty Circle, 1000 Flowers",
+    "shakti": "To heal and support",
+    "gana": "Rakshasa",
+    "gunas": ["Sattva", "Tamas", "Sattva"]
+  },
+  "Purva Bhadrapada": {
+    "rulingPlanet": "Jupiter",
+    "deity": "Aja Ekapada",
+    "symbol": "Two Front Legs of Cot",
+    "shakti": "To raise a person up",
+    "gana": "Manushya",
+    "gunas": ["Sattva", "Sattva", "Rajas"]
+  },
+  "Uttara Bhadrapada": {
+    "rulingPlanet": "Saturn",
+    "deity": "Ahir Budhyana",
+    "symbol": "Back Legs of Cot, Snake in Water",
+    "shakti": "To bring rain and stability",
+    "gana": "Manushya",
+    "gunas": ["Sattva", "Sattva", "Tamas"]
+  },
+  "Revati": {
+    "rulingPlanet": "Mercury",
+    "deity": "Pushan",
+    "symbol": "Pair of Fish, Drum",
+    "shakti": "To nourish and transcend",
+    "gana": "Deva",
+    "gunas": ["Sattva", "Sattva", "Sattva"]
+  }
+}

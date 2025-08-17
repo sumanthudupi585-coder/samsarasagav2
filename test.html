@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samsara Saga - Test Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Kurale&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .test-container {
+            width: 95%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--color-accent);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(169, 113, 66, 0.2);
+            z-index: 10;
+            position: relative;
+        }
+        
+        .test-title {
+            font-family: var(--font-title);
+            font-size: clamp(3rem, 8vw, 4rem);
+            color: var(--color-accent-glow);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .test-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed rgba(169, 113, 66, 0.3);
+        }
+        
+        .test-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--color-accent-glow);
+            margin-bottom: 1rem;
+        }
+        
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .test-link {
+            background-color: transparent;
+            border: 1px solid var(--color-accent);
+            color: var(--color-text);
+            padding: 1rem;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+        }
+        
+        .test-link:hover {
+            background-color: rgba(224, 150, 88, 0.1);
+            box-shadow: 0 0 25px 8px rgba(224, 150, 88, 0.15);
+            transform: translateY(-3px);
+        }
+        
+        .test-results {
+            background-color: rgba(42, 42, 42, 0.6);
+            border: 1px solid rgba(169, 113, 66, 0.3);
+            border-radius: 4px;
+            padding: 1rem;
+            height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div id="cursor-container">
+        <svg class="chakra-cursor" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e09658" stroke-width="1">
+            <circle cx="12" cy="12" r="10"/>
+            <g transform="translate(12,12)">
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(0)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(30)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(60)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(90)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(120)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(150)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(180)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(210)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(240)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(270)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(300)"/>
+                <path d="M0,-10 L 2,-8 L 0,-6 L -2,-8 Z" transform="rotate(330)"/>
+            </g>
+            <circle cx="12" cy="12" r="2" fill="#e09658"/>
+        </svg>
+    </div>
+
+    <main class="test-container">
+        <h1 class="test-title">Samsara Saga - Test Page</h1>
+        
+        <div class="test-section">
+            <h2 class="section-title">Page Navigation</h2>
+            <div class="test-links">
+                <a href="SS.html" class="test-link">Start Screen</a>
+                <a href="CB.html" class="test-link">Character Building</a>
+                <a href="character-profile.html?nakshatra=1&pada=Dharma&guna3=Sattva" class="test-link">Character Profile</a>
+                <a href="Gameplay.html?nakshatra=1&pada=Dharma&guna3=Sattva" class="test-link">Gameplay</a>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="section-title">File Structure Test</h2>
+            <div class="test-links">
+                <a href="#" class="test-link" id="check-files">Check Files</a>
+                <a href="#" class="test-link" id="check-css">Check CSS</a>
+                <a href="#" class="test-link" id="check-js">Check JS</a>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="section-title">Test Results</h2>
+            <div class="test-results" id="test-output">Test results will appear here...</div>
+        </div>
+    </main>
+
+    <script>
+        // Custom cursor functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the device has a fine pointer (e.g., a mouse)
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.body.classList.add('custom-cursor-active');
+
+                const cursorContainer = document.getElementById('cursor-container');
+
+                document.addEventListener('mousemove', (e) => {
+                    if (cursorContainer) {
+                        cursorContainer.style.left = e.clientX + 'px';
+                        cursorContainer.style.top = e.clientY + 'px';
+                    }
+                });
+
+                document.addEventListener('mouseover', (e) => {
+                    if (e.target.matches('a, button, .test-link')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.add('active');
+                        }
+                    }
+                });
+
+                document.addEventListener('mouseout', (e) => {
+                    if (e.target.matches('a, button, .test-link')) {
+                        if (cursorContainer) {
+                            cursorContainer.classList.remove('active');
+                        }
+                    }
+                });
+            }
+        });
+        
+        // Test functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const testOutput = document.getElementById('test-output');
+            
+            function log(message) {
+                testOutput.textContent += message + '\n';
+                testOutput.scrollTop = testOutput.scrollHeight;
+            }
+            
+            document.getElementById('check-files').addEventListener('click', (e) => {
+                e.preventDefault();
+                testOutput.textContent = '';
+                log('Checking files...');
+                
+                const requiredFiles = [
+                    'SS.html',
+                    'CB.html',
+                    'character-profile.html',
+                    'Gameplay.html',
+                    'styles/style.css',
+                    'styles/character-profile.css',
+                    'styles/gameplay.css',
+                    'js/main.js'
+                ];
+                
+                let allFilesExist = true;
+                
+                requiredFiles.forEach(file => {
+                    fetch(file)
+                        .then(response => {
+                            if (response.ok) {
+                                log(`✅ ${file} exists`);
+                            } else {
+                                log(`❌ ${file} not found`);
+                                allFilesExist = false;
+                            }
+                        })
+                        .catch(error => {
+                            log(`❌ Error checking ${file}: ${error}`);
+                            allFilesExist = false;
+                        });
+                });
+                
+                setTimeout(() => {
+                    if (allFilesExist) {
+                        log('\nAll required files exist! ✨');
+                    } else {
+                        log('\nSome files are missing. Check the errors above. ⚠️');
+                    }
+                }, 1000);
+            });
+            
+            document.getElementById('check-css').addEventListener('click', (e) => {
+                e.preventDefault();
+                testOutput.textContent = '';
+                log('Checking CSS variables...');
+                
+                const requiredVars = [
+                    '--color-accent',
+                    '--color-accent-glow',
+                    '--color-text',
+                    '--font-title',
+                    '--font-body'
+                ];
+                
+                const computedStyle = getComputedStyle(document.documentElement);
+                
+                requiredVars.forEach(variable => {
+                    const value = computedStyle.getPropertyValue(variable);
+                    if (value) {
+                        log(`✅ ${variable}: ${value}`);
+                    } else {
+                        log(`❌ ${variable} not defined`);
+                    }
+                });
+            });
+            
+            document.getElementById('check-js').addEventListener('click', (e) => {
+                e.preventDefault();
+                testOutput.textContent = '';
+                log('Checking JavaScript functionality...');
+                
+                // Check if cursor container exists
+                const cursorContainer = document.getElementById('cursor-container');
+                if (cursorContainer) {
+                    log('✅ Custom cursor container exists');
+                } else {
+                    log('❌ Custom cursor container not found');
+                }
+                
+                // Check if body has the custom-cursor-active class
+                if (document.body.classList.contains('custom-cursor-active')) {
+                    log('✅ Custom cursor is active');
+                } else {
+                    log('❌ Custom cursor is not active');
+                }
+                
+                log('\nTest navigation links:');
+                document.querySelectorAll('.test-link').forEach(link => {
+                    if (link.href && link.href !== '#') {
+                        log(`✅ ${link.textContent}: ${link.href}`);
+                    } else if (link.id !== 'check-files' && link.id !== 'check-css' && link.id !== 'check-js') {
+                        log(`❌ ${link.textContent} has no valid href`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
